@@ -1,7 +1,7 @@
 // Vaa Performance — Service worker V2
 // - Ne met en cache QUE les fichiers de l'app (même origine) : jamais les appels Supabase / Google.
 // - Réseau d'abord pour la page (les mises à jour arrivent tout de suite), cache en secours hors ligne.
-const CACHE = 'vaa-performance-v2';
+const CACHE = 'vaa-performance-v3';
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', e => {

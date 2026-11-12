@@ -1,127 +1,960 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#17131c"><meta name="description" content="Vaa Performance — programme, nutrition et suivi personnel">
-<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f0d12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="Vaa Performance — programme Va'a, musculation, nutrition et suivi">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
 <title>Vaa Performance</title>
 <style>
-:root{--pink:#f50091;--pink2:#ff64b7;--ink:#17131c;--muted:#786f7b;--bg:#f7f4f7;--card:#fff;--line:#eee7ee;--green:#16865b}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding-bottom:90px}header{background:var(--ink);color:white;padding:22px 18px 20px;border-radius:0 0 24px 24px}.brand{display:flex;align-items:center;gap:11px}.logo{width:43px;height:43px;border-radius:14px;background:var(--pink);display:grid;place-items:center;font-size:23px}.brand b{letter-spacing:.8px}.brand small{display:block;color:#f5a4d0;font-size:11px;letter-spacing:1.4px;margin-top:3px}.hero{margin-top:22px}.hero h1{font-size:25px;margin:0 0 5px}.hero p{margin:0;color:#d7cbd7;font-size:13px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:18px}.stat{background:#2b2430;border-radius:13px;padding:11px}.stat strong{display:block;color:var(--pink2);font-size:20px}.stat span{font-size:11px;color:#ded2df}.wrap{max-width:720px;margin:auto;padding:15px}.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;background:#ebe5ec;border-radius:14px;padding:5px;position:sticky;top:6px;z-index:5}.tabs button{border:0;background:transparent;border-radius:10px;padding:10px 3px;font-size:12px;color:#655b68}.tabs button.active{background:white;color:var(--pink);font-weight:700;box-shadow:0 2px 8px #25132912}.panel{display:none;padding-top:17px}.panel.active{display:block}h2{font-size:19px;margin:4px 0 13px}.muted{color:var(--muted);font-size:13px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px;margin:10px 0;box-shadow:0 3px 14px #29142b08}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.task{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid var(--line)}.task:last-child{border:0}.task input,.shop input{accent-color:var(--pink);width:20px;height:20px}.task label{flex:1}.task small{display:block;color:var(--muted);font-size:12px;margin-top:3px}.done label{text-decoration:line-through;color:#968b98}.pill{font-size:11px;background:#fde4f2;color:#b50068;border-radius:30px;padding:5px 9px;font-weight:700}.bar{height:8px;background:#f0e9f0;border-radius:20px;overflow:hidden}.bar i{display:block;height:100%;background:var(--pink);width:0}.btn{border:0;background:var(--pink);color:white;font-weight:700;border-radius:12px;padding:12px 15px;font-size:14px}.btn.secondary{background:#f7e5f0;color:#a0005b}.btn.ghost{background:white;color:var(--pink);border:1px solid #f2c5df}.btnrow{display:flex;gap:8px;flex-wrap:wrap}input[type=number],input[type=text],input[type=password],input[type=email],textarea,select{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px;font:inherit;background:white;color:var(--ink)}textarea{min-height:85px;resize:vertical}.field{margin:10px 0}.field label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px}.day{border-left:4px solid var(--pink);padding:12px 13px}.day b{display:block}.day span{display:block;color:var(--pink);font-weight:650;margin:4px 0}.day small{color:var(--muted)}.shop{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.shop span{flex:1}.shop small{color:var(--muted)}.shop.checked span{text-decoration:line-through;color:#9b919d}.note{background:#fff5fb;border:1px solid #f8d4e9;border-radius:13px;padding:12px;color:#6d3154;font-size:13px;line-height:1.45}.foot{text-align:center;color:#988c99;font-size:11px;padding:20px 0}.toast{position:fixed;bottom:85px;left:50%;transform:translateX(-50%);background:#211a25;color:white;padding:11px 15px;border-radius:20px;font-size:13px;display:none;z-index:20}.navbottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:10px max(12px,env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:8px;z-index:10}.navbottom button{max-width:680px;flex:1}.pink{color:var(--pink)}.btn:disabled{opacity:.5}.day.today{background:#fff5fb;border-left-width:7px}.day .pill{float:right}.pill.ok{background:#dff3ea;color:var(--green)}.dayhead{font-size:13px;color:var(--muted);margin:-8px 0 10px}@media(min-width:600px){header{padding:26px max(22px,calc((100% - 680px)/2))}.wrap{padding:20px}.tabs button{font-size:14px}}
+:root{
+  --bg:#0f0d12;--card:#19151e;--card2:#221c29;--line:#2f2737;--ink:#f5eff7;--muted:#a99eae;--dim:#7d7282;
+  --pink:#f50091;--pinkt:#ff4fb2;--pinkbg:#3a1029;--green:#3ddc97;--greenbg:#12321f;--amber:#ffb547;--amberbg:#3a2a10;--blue:#6cb6ff;
+  --r:16px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;cursor:pointer}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--card2);border:1px solid var(--line);border-radius:11px;padding:11px 12px;width:100%}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--pink);outline-offset:0;border-color:transparent}
+textarea{min-height:80px;resize:vertical}
+input[type=range]{padding:0;background:none;border:0;accent-color:var(--pink)}
+input[type=checkbox]{accent-color:var(--pink);width:22px;height:22px;flex:none;margin:0}
+.top{background:linear-gradient(160deg,#1e1024 0%,#0f0d12 70%);padding:calc(14px + env(safe-area-inset-top)) 16px 16px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:11px;max-width:760px;margin:auto}
+.logo{width:40px;height:40px;border-radius:12px;background:var(--pink);display:grid;place-items:center;flex:none}
+.brand b{letter-spacing:.8px;font-size:15px;display:block}
+.brand small{color:var(--pinkt);font-size:12px;font-weight:600}
+.brand .grow{flex:1;min-width:0}
+.iconbtn{background:var(--card2);border:1px solid var(--line);border-radius:12px;width:40px;height:40px;display:grid;place-items:center;flex:none}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:760px;margin:14px auto 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:10px 11px}
+.stat strong{display:block;color:var(--pinkt);font-size:19px;line-height:1.2}
+.stat span{font-size:11px;color:var(--muted)}
+.wrap{max-width:760px;margin:auto;padding:14px 16px}
+.panel{display:none}.panel.active{display:block}
+h2{font-size:19px;margin:6px 0 10px}
+h3{font-size:15px;margin:0 0 8px}
+.muted{color:var(--muted);font-size:13px}
+.dim{color:var(--dim);font-size:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px;margin:10px 0}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.row.start{justify-content:flex-start}
+.wrapflex{display:flex;flex-wrap:wrap;gap:8px}
+.pill{display:inline-block;font-size:11px;font-weight:700;border-radius:30px;padding:4px 9px;background:var(--pinkbg);color:var(--pinkt);white-space:nowrap}
+.pill.g{background:var(--greenbg);color:var(--green)}.pill.a{background:var(--amberbg);color:var(--amber)}.pill.n{background:var(--card2);color:var(--muted)}
+.btn{border:0;background:var(--pink);color:#fff;font-weight:700;border-radius:12px;padding:11px 14px;font-size:14px}
+.btn.sec{background:var(--pinkbg);color:var(--pinkt)}
+.btn.ghost{background:transparent;color:var(--pinkt);border:1px solid #5a2346}
+.btn.sm{padding:7px 11px;font-size:13px;border-radius:10px}
+.btn:disabled{opacity:.45}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap}
+.bar{height:8px;background:var(--card2);border-radius:20px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--pink);border-radius:20px;transition:width .25s}
+.bar.g i{background:var(--green)}.bar.b i{background:var(--blue)}
+.field{margin:9px 0}.field label{font-size:12px;color:var(--muted);display:block;margin-bottom:5px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mini{background:var(--card2);border-radius:12px;padding:9px 10px}
+.mini b{display:block;font-size:16px}.mini span{font-size:11px;color:var(--muted)}
+.note{background:#22101b;border:1px solid #4a1d38;border-radius:13px;padding:11px 12px;color:#f3c6df;font-size:13px;line-height:1.5}
+.note.warn{background:var(--amberbg);border-color:#5c4316;color:#ffd89a}
+ul.list{margin:4px 0 0;padding-left:18px}ul.list li{margin:4px 0}
+.seg{display:flex;background:var(--card2);border-radius:12px;padding:4px;gap:4px;margin-bottom:10px}
+.seg button{flex:1;border:0;background:transparent;border-radius:9px;padding:9px 4px;font-size:13px;color:var(--muted);font-weight:600}
+.seg button.on{background:var(--pink);color:#fff}
+/* week strip */
+.strip{display:grid;grid-template-columns:28px repeat(7,1fr) 28px;gap:4px;align-items:center;margin-bottom:6px}
+.strip .nav{border:0;background:transparent;color:var(--muted);font-size:20px;padding:0}
+.dbtn{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:7px 0 6px;text-align:center}
+.dbtn small{display:block;font-size:10px;color:var(--muted);font-weight:700}
+.dbtn b{display:block;font-size:15px}
+.dbtn i{display:block;height:4px;margin:4px 8px 0;border-radius:4px;background:var(--card2);overflow:hidden}
+.dbtn i u{display:block;height:100%;background:var(--green);text-decoration:none}
+.dbtn.today{border-color:#5a2346}
+.dbtn.sel{background:var(--pink);border-color:var(--pink)}.dbtn.sel small{color:#ffd1ea}.dbtn.sel i{background:#ff7cc4}
+.hero{background:linear-gradient(135deg,#3a0f2b,#1b1220 65%);border:1px solid #4d1a3c}
+.hero .kind{font-size:12px;color:#ffbde0;font-weight:700;letter-spacing:.4px;text-transform:uppercase}
+.hero h2{margin:2px 0 4px;font-size:22px}
+/* timeline */
+.tl{position:relative}
+.tli{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.tli:last-child{border-bottom:0}
+.tli .t{width:44px;flex:none;font-size:12px;font-weight:700;color:var(--muted);padding-top:2px}
+.tli .b{flex:1;min-width:0}
+.tli .b b{display:block;font-size:14.5px}
+.tli .b small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+.tli .k{width:8px;height:8px;border-radius:50%;margin-top:7px;flex:none;background:var(--dim)}
+.tli.meal .k{background:var(--green)}.tli.session .k{background:var(--pink)}.tli.supp .k{background:var(--blue)}.tli.care .k{background:var(--amber)}.tli.sleep .k{background:#9a8cff}
+.tli.done .b b{text-decoration:line-through;color:var(--dim)}
+.tli .open{margin-top:7px}
+.glasses{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}
+.glass{width:18px;height:24px;border:2px solid #3b4d66;border-radius:3px 3px 6px 6px;position:relative;overflow:hidden}
+.glass.on{border-color:var(--blue);background:linear-gradient(to top,var(--blue) 75%,transparent 75%)}
+.chips{display:flex;gap:6px}
+.chips button{flex:1;border:1px solid var(--line);background:var(--card2);border-radius:10px;padding:8px 0;font-weight:700;color:var(--muted)}
+.chips button.on{background:var(--pink);border-color:var(--pink);color:#fff}
+.rangeval{font-weight:700;color:var(--pinkt);min-width:44px;text-align:right}
+/* exercises */
+.ex{border-top:1px solid var(--line);padding:12px 0}.ex:first-of-type{border-top:0}
+.ex .presc{font-size:12.5px;color:var(--pinkt);font-weight:700;margin:2px 0}
+.ex .cue{font-size:12.5px;color:var(--muted)}
+.sets{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:6px;margin-top:8px}
+.setrow{display:flex;align-items:center;gap:4px;background:var(--card2);border-radius:10px;padding:5px 7px}
+.setrow span{font-size:11px;color:var(--dim);width:16px}
+.setrow input{padding:6px 5px;text-align:center;border-radius:8px;background:var(--bg);min-width:0}
+.setrow em{font-style:normal;color:var(--dim);font-size:12px}
+.last{font-size:12px;color:var(--green);margin-top:6px}
+.daycard{display:flex;gap:12px;align-items:center;cursor:pointer;width:100%;text-align:left;color:inherit}
+.daycard .dn{width:46px;flex:none;text-align:center}
+.daycard .dn b{display:block;font-size:13px}.daycard .dn small{color:var(--muted);font-size:11px}
+.daycard .info{flex:1;min-width:0}
+.daycard .info b{display:block}.daycard .info small{color:var(--muted);font-size:12.5px;display:block}
+.daycard.sel{border-color:var(--pink)}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th,.tbl td{text-align:left;padding:7px 6px;border-bottom:1px solid var(--line)}
+.tbl th{color:var(--muted);font-weight:600;font-size:12px}
+.shop{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.shop:last-child{border:0}.shop span{flex:1}.shop small{color:var(--muted)}
+.shop.checked span{text-decoration:line-through;color:var(--dim)}
+.hist{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.hist:last-child{border:0}
+.x{border:0;background:transparent;color:var(--dim);font-size:16px;padding:0 4px}
+svg.chart{width:100%;height:auto;display:block}
+.bars{display:flex;align-items:flex-end;gap:6px;height:90px;margin-top:8px}
+.bars div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.bars i{display:block;width:100%;background:var(--pink);border-radius:6px 6px 2px 2px;min-height:2px}
+.bars small{font-size:10px;color:var(--muted);margin-top:3px}.bars em{font-style:normal;font-size:10px;color:var(--ink)}
+details{border-top:1px solid var(--line);padding-top:8px;margin-top:8px}
+summary{cursor:pointer;font-weight:700;font-size:13.5px;color:var(--pinkt)}
+.navbottom{position:fixed;bottom:0;left:0;right:0;z-index:20;background:rgba(18,15,22,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom));display:flex;justify-content:center}
+.navbottom .in{display:grid;grid-template-columns:repeat(6,1fr);max-width:760px;width:100%}
+.navbottom button{border:0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:2px;padding:5px 0;color:var(--dim);font-size:10.5px;font-weight:600}
+.navbottom button svg{width:22px;height:22px}
+.navbottom button.on{color:var(--pinkt)}
+.toast{position:fixed;bottom:calc(84px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:#2b2232;border:1px solid var(--line);color:#fff;padding:10px 15px;border-radius:20px;font-size:13px;display:none;z-index:30;max-width:90vw}
+.foot{text-align:center;color:var(--dim);font-size:11px;padding:18px 0 6px}
+@media(min-width:640px){.wrap{padding:18px 20px}.stat strong{font-size:22px}}
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="logo">🌊</div><div><b>VAA PERFORMANCE</b><small>TRAIN · EAT · RECOVER</small></div></div><div class="hero"><h1>Ta progression, chaque jour.</h1><p>Programme personnel · 12 semaines · Objectif 100 kg</p></div><div class="stats"><div class="stat"><strong id="headWeight">120 kg</strong><span>Poids actuel</span></div><div class="stat"><strong>180 g</strong><span>Protéines / jour</span></div><div class="stat"><strong>16/8</strong><span>Jeûne flexible</span></div></div></header>
-<main class="wrap"><nav class="tabs"><button class="active" data-tab="today">Aujourd'hui</button><button data-tab="plan">Planning</button><button data-tab="food">Nutrition</button><button data-tab="shop">Courses</button></nav>
-<section id="today" class="panel active"><div class="row"><h2>Mes tâches</h2><span class="pill" id="progressLabel">0 % réalisé</span></div><p class="dayhead" id="todayLabel"></p><div class="bar"><i id="progressBar"></i></div><div class="card" id="tasks"></div><div class="card"><div class="row"><b>Hydratation</b><b class="pink" id="waterLabel">0 / 8 verres</b></div><p class="muted">Repère indicatif : adapte selon chaleur, transpiration et durée de l'effort.</p><div class="btnrow"><button class="btn secondary" id="waterMinus">−</button><button class="btn" id="waterPlus">+ Ajouter un verre</button></div></div><div class="card"><h2>Poids du jour</h2><div class="field"><label>Poids (kg)</label><input id="weightInput" type="number" step="0.1" value="120"></div><button class="btn" id="saveWeight">Enregistrer le poids</button><p class="muted" id="weightHistory">Aucune pesée enregistrée.</p></div></section>
-<section id="plan" class="panel"><h2>Planning hebdomadaire</h2><div id="weekPlan"></div><div class="note">Les séances lestées en V1 restent limitées à 1 h 30 en semaine. Fixe solidement le lest, garde-le bas et centré, et ne fais pas progresser simultanément lest, durée et intensité.</div></section>
-<section id="food" class="panel"><h2>Nutrition & compléments</h2><div class="card"><div class="row"><b>Fenêtre alimentaire habituelle</b><span class="pill">16/8 flexible</span></div><h2 class="pink" style="font-size:27px">12h – 20h</h2><p class="muted">Repère habituel, à assouplir après musculation matinale ou course V1 longue si la récupération le demande.</p></div><div class="card"><h2>Repères quotidiens</h2><div class="task"><label>Protéines<small>Environ 180 g / jour</small></label></div><div class="task"><label>Créatine<small>3–5 g chaque jour, avec un repas</small></label></div><div class="task"><label>Whey<small>25–30 g si nécessaire pour atteindre les protéines</small></label></div><div class="task"><label>Électrolytes<small>Sorties longues / chaleur / forte transpiration</small></label></div><div class="task"><label>Glucides<small>À adapter à la charge V1, particulièrement samedi</small></label></div></div><div class="card"><h2>Journal alimentaire & sensations</h2><textarea id="foodNotes" placeholder="Repas, compléments, énergie, sommeil, récupération…"></textarea><button class="btn" style="margin-top:9px" id="saveNotes">Enregistrer mes notes</button></div><div class="note">Les calories et les besoins restent des estimations à ajuster selon la tendance du poids, l'énergie et les performances. La supplémentation ne remplace pas une alimentation suffisante ni un avis médical si une maladie ou un traitement le nécessite.</div></section>
-<section id="shop" class="panel"><div class="row"><h2>Courses de la semaine</h2><span class="pill" id="shopCount">0 / 10</span></div><p class="muted">Liste de départ à adapter aux menus et à ce qu'il reste à la maison.</p><div class="card" id="shoppingList"></div><div class="btnrow"><button class="btn" id="copyList">Copier la liste</button><button class="btn ghost" id="resetList">Réinitialiser</button><button class="btn secondary" id="exportBackup">Exporter sauvegarde JSON</button></div></section>
-<section class="card" id="cloudCard">
-  <div class="row"><h2>Compte & synchronisation</h2><span class="pill" id="cloudStatus">Hors ligne</span></div>
-  <p class="muted" id="cloudMessage">Connecte ton compte pour synchroniser tes données entre appareils.</p>
-  <div id="authForm">
-    <div class="field"><label>Adresse e-mail</label><input id="authEmail" type="text" autocomplete="email" placeholder="ton@email.com"></div>
-    <div class="field"><label>Mot de passe</label><input id="authPassword" type="password" autocomplete="current-password" placeholder="Au moins 8 caractères"></div>
-    <div class="btnrow"><button class="btn" id="signInBtn">Se connecter</button><button class="btn secondary" id="signUpBtn">Créer mon compte</button></div>
+<header class="top">
+  <div class="brand">
+    <div class="logo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M3 15c3-3.5 6-3.5 9 0s6 3.5 9 0M3 19.5c3-3.5 6-3.5 9 0s6 3.5 9 0"/><path d="M12 3.5 9 9.5h6z" fill="#fff" stroke="none"/></svg></div>
+    <div class="grow"><b>VAA PERFORMANCE</b><small id="phaseChip">—</small></div>
+    <button class="iconbtn" data-act="tab" data-tab="compte" aria-label="Compte et réglages"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></button>
   </div>
-  <div class="btnrow" id="signedInActions" style="display:none"><button class="btn secondary" id="syncNowBtn">Synchroniser maintenant</button><button class="btn ghost" id="signOutBtn">Se déconnecter</button></div>
-</section>
-<section class="card" id="driveCard" style="display:none">
-  <div class="row"><h2>Google Drive</h2><span class="pill" id="driveStatus">Non connecté</span></div>
-  <p class="muted" id="driveMessage">Connecte Google Drive pour sauvegarder tes données dans un fichier visible dans ton Drive.</p>
-  <div class="btnrow" id="driveConnectRow"><button class="btn" id="driveConnectBtn">Connecter Google Drive</button></div>
-  <div class="btnrow" id="driveActionsRow" style="display:none"><button class="btn" id="driveBackupBtn">Sauvegarder sur Drive</button><button class="btn secondary" id="driveRestoreBtn">Restaurer</button><button class="btn ghost" id="driveDisconnectBtn">Déconnecter</button></div>
-</section>
-<div class="foot">VAA PERFORMANCE · V1.1 · Supabase + Google Drive + sauvegarde locale</div></main>
-<div class="navbottom"><button class="btn ghost" id="enableNotifications">Activer les notifications</button></div><div class="toast" id="toast"></div>
+  <div class="stats">
+    <div class="stat"><strong id="stWeight">—</strong><span>Poids actuel</span></div>
+    <div class="stat"><strong id="stLeft">—</strong><span id="stLeftLbl">Reste</span></div>
+    <div class="stat"><strong id="stWeek">—</strong><span>Programme</span></div>
+  </div>
+</header>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<main class="wrap">
+  <section id="p-jour" class="panel active"></section>
+  <section id="p-semaine" class="panel"></section>
+  <section id="p-nutri" class="panel"></section>
+  <section id="p-muscu" class="panel"></section>
+  <section id="p-vaa" class="panel"></section>
+  <section id="p-suivi" class="panel"></section>
+  <section id="p-compte" class="panel">
+    <h2>Compte & réglages</h2>
+    <div class="card" id="cloudCard">
+      <div class="row"><h3>Compte & synchronisation</h3><span class="pill" id="cloudStatus">Hors ligne</span></div>
+      <p class="muted" id="cloudMessage">Connecte ton compte pour synchroniser tes données entre appareils.</p>
+      <div id="authForm">
+        <div class="field"><label for="authEmail">Adresse e-mail</label><input id="authEmail" type="email" autocomplete="email" placeholder="ton@email.com"></div>
+        <div class="field"><label for="authPassword">Mot de passe</label><input id="authPassword" type="password" autocomplete="current-password" placeholder="Au moins 8 caractères"></div>
+        <div class="btnrow"><button class="btn" id="signInBtn">Se connecter</button><button class="btn sec" id="signUpBtn">Créer mon compte</button></div>
+      </div>
+      <div class="btnrow" id="signedInActions" style="display:none"><button class="btn sec" id="syncNowBtn">Synchroniser maintenant</button><button class="btn ghost" id="signOutBtn">Se déconnecter</button></div>
+    </div>
+    <div class="card" id="driveCard" style="display:none">
+      <div class="row"><h3>Google Drive</h3><span class="pill" id="driveStatus">Non connecté</span></div>
+      <p class="muted" id="driveMessage">Connecte Google Drive pour sauvegarder tes données dans un fichier visible dans ton Drive.</p>
+      <div class="btnrow" id="driveConnectRow"><button class="btn" id="driveConnectBtn">Connecter Google Drive</button></div>
+      <div class="btnrow" id="driveActionsRow" style="display:none"><button class="btn" id="driveBackupBtn">Sauvegarder sur Drive</button><button class="btn sec" id="driveRestoreBtn">Restaurer</button><button class="btn ghost" id="driveDisconnectBtn">Déconnecter</button></div>
+    </div>
+    <div class="card" id="settingsBox"></div>
+    <div class="card">
+      <h3>Sauvegarde manuelle</h3>
+      <p class="muted">Fichier JSON de toutes tes données (poids, séances, journal…).</p>
+      <div class="btnrow"><button class="btn sec" data-act="export">Exporter</button><button class="btn ghost" data-act="importPick">Importer</button><input type="file" id="importFile" accept="application/json,.json" hidden></div>
+    </div>
+    <div class="card">
+      <h3>Notifications</h3>
+      <p class="muted">Autorise les notifications sur cet appareil. Sur iPhone, l'app doit d'abord être ajoutée à l'écran d'accueil.</p>
+      <button class="btn ghost" id="enableNotifications">Activer les notifications</button>
+    </div>
+  </section>
+  <div class="foot">VAA PERFORMANCE · V2 · Supabase + Google Drive + sauvegarde locale</div>
+</main>
+
+<nav class="navbottom" aria-label="Navigation principale"><div class="in">
+  <button data-act="tab" data-tab="jour" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>Jour</button>
+  <button data-act="tab" data-tab="semaine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Semaine</button>
+  <button data-act="tab" data-tab="nutri"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21c-4.5 0-7-3.5-7-8 0-3.5 2.5-6 5-6 1 0 1.5.5 2 .5s1-.5 2-.5c2.5 0 5 2.5 5 6 0 4.5-2.5 8-7 8z"/><path d="M12 7.5c0-2 1-3.5 3-4.5"/></svg>Nutrition</button>
+  <button data-act="tab" data-tab="muscu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg>Muscu</button>
+  <button data-act="tab" data-tab="vaa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2.5 15.5c3 2.5 16 2.5 19 0M5 15.5l2-1M19 15.5l-2-1"/><path d="M15 3l-6 12M7.5 16.5l1.5-1.5"/></svg>Va'a</button>
+  <button data-act="tab" data-tab="suivi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 20h18M5 16l4-5 4 3 6-8"/></svg>Suivi</button>
+</div></nav>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
+/* =====================================================================
+   DONNÉES DU PROGRAMME
+   ===================================================================== */
+const DAYTYPES = {
+  rest:  {label:'Jour de repos',   kcal:'2 600 – 2 700', P:180, G:260, L:95, waterL:2.5},
+  train: {label:'Jour d’entraînement', kcal:'2 850 – 2 950', P:180, G:340, L:90, waterL:3.5},
+  long:  {label:'Sortie longue',   kcal:'3 000 – 3 200', P:180, G:400, L:85, waterL:4.5}
+};
+
+const PHASES = {
+  1:{name:'Fondation',     w:'S1–4',  note:'Technique propre, volume modéré, effort RPE 7. On installe la régularité.'},
+  2:{name:'Développement', w:'S5–8',  note:'Une série ou quelques répétitions de plus. Un seul paramètre progresse à la fois.'},
+  3:{name:'Spécifique',    w:'S9–11', note:'Allure course, intensité plus haute, volume stable.'},
+  4:{name:'Affûtage',      w:'S12',   note:'Volume réduit d’environ 40 %, un peu d’intensité gardée. Fraîcheur avant tout.'}
+};
+
+// Repas types (p = protéines approximatives en g)
+const M = {
+  // Lundi / Mercredi — Va'a l'après-midi
+  vR1:  {t:'12:00', kind:'meal', title:'Repas 1 — ouverture de la fenêtre', detail:'200 g poulet ou dinde · 200 g riz cuit · légumes à volonté · 1 c. à s. d’huile d’olive', p:50},
+  vPre: {t:'15:30', kind:'meal', title:'Collation avant Va’a', detail:'1 banane · 200 g skyr (ou 30 g whey). Digeste, 30 min avant de partir.', p:25},
+  vPost:{t:'18:15', kind:'meal', title:'Repas de récupération', detail:'200 g poisson · 300 g patate douce · légumes. Dans l’heure qui suit la séance.', p:50},
+  vLast:{t:'19:45', kind:'meal', title:'Dernier repas — fin de fenêtre 20 h', detail:'3 œufs + 2 blancs · légumes · 250 g skyr · 1 fruit', p:50},
+  // Mardi / Jeudi — muscu le matin
+  mPost:{t:'06:15', kind:'meal', title:'Récupération post-séance', detail:'30 g whey + 1 banane. Fenêtre élargie ce jour : la récupération passe avant le 16/8.', p:27},
+  mR1:  {t:'12:00', kind:'meal', title:'Repas 1', detail:'200 g viande maigre · 200 g riz cuit · 2 œufs · légumes', p:62},
+  mSnk: {t:'16:00', kind:'meal', title:'Collation', detail:'300 g skyr ou fromage blanc · 1 fruit · 20 g de noix', p:32},
+  mDin: {t:'19:30', kind:'meal', title:'Dîner', detail:'200 g poulet · 300 g patate douce · légumes', p:50},
+  // Vendredi
+  fR1:  {t:'12:00', kind:'meal', title:'Repas 1', detail:'200 g poulet · 200 g riz cuit · 2 œufs · légumes', p:62},
+  fSnk: {t:'16:00', kind:'meal', title:'Collation', detail:'200 g skyr · 30 g whey · 1 fruit', p:45},
+  fDin: {t:'19:30', kind:'meal', title:'Dîner — veille de sortie longue', detail:'250 g poisson · 300 g riz ou patate douce · légumes. Recharge en glucides.', p:55},
+  // Samedi
+  sPre: {t:'05:45', kind:'meal', title:'Petit-déjeuner pré-course', detail:'2 bananes · 80 g flocons d’avoine · 200 g skyr · 1 c. à s. de miel · 500 ml d’eau', p:25},
+  sRec: {t:'10:30', kind:'meal', title:'Récupération immédiate', detail:'30 g whey + 1 banane + 500 ml d’eau avec électrolytes', p:27},
+  sR1:  {t:'12:00', kind:'meal', title:'Repas de récupération', detail:'250 g poulet · 300 g riz cuit · légumes', p:60},
+  sSnk: {t:'16:00', kind:'meal', title:'Collation', detail:'250 g skyr · fruits', p:25},
+  sDin: {t:'19:30', kind:'meal', title:'Dîner', detail:'200 g poisson · 300 g patate douce · légumes', p:45},
+  // Dimanche
+  dR1:  {t:'12:00', kind:'meal', title:'Repas 1', detail:'4 œufs · 200 g skyr · fruits · 1 tranche de pain complet', p:48},
+  dSnk: {t:'15:00', kind:'meal', title:'Collation', detail:'1 boîte de thon · crudités · 1 fruit', p:30},
+  dDin: {t:'19:30', kind:'meal', title:'Dîner', detail:'250 g viande maigre ou poulet · 150 g riz cuit · grande portion de légumes', p:60}
+};
+const crea = t => ({t, kind:'supp', title:'Créatine 3–5 g', detail:'Avec le repas, tous les jours (même au repos).'});
+
+const PLAN = {
+  1:{name:'Lundi', type:'train', kind:'vaa', s:'lun', title:'Va’a V1 lestée +10 kg', sub:'Rapa 26 · ≈ 40 coups/min · force-endurance · 1 h 30 max', tl:[
+    {...M.vR1,id:'l1'},{...crea('12:00'),id:'l2'},{...M.vPre,id:'l3'},
+    {id:'l4',t:'16:00',kind:'session',title:'Va’a V1 lestée — force / endurance',detail:'Rapa 26 · lest +10 kg · 75 à 90 min maximum',open:'vaa:lun'},
+    {id:'l5',t:'17:45',kind:'care',title:'Étirements 10 min',detail:'Dos, épaules, grand dorsal, mollets · balle sous le pied 1 min/pied'},
+    {...M.vPost,id:'l6'},{...M.vLast,id:'l7'},
+    {id:'l8',t:'22:00',kind:'sleep',title:'Coucher',detail:'Objectif 7 h 30 de sommeil (muscu demain 5 h).'}]},
+  2:{name:'Mardi', type:'train', kind:'muscu', s:'A', title:'Musculation A + calisthénie', sub:'Tirage & chaîne postérieure · 5 h · ≈ 60 min', tl:[
+    {id:'ma1',t:'04:45',kind:'care',title:'Lever · 500 ml d’eau',detail:'Une banane avant la séance si l’énergie manque.'},
+    {id:'ma2',t:'05:00',kind:'session',title:'Musculation A — tirage & chaîne postérieure',detail:'Échauffement 8 min · 7 exercices',open:'muscu:A'},
+    {id:'ma3',t:'05:45',kind:'session',title:'Calisthénie 15 min',detail:'Circuit sans impact · 3 tours',open:'muscu:A'},
+    {...M.mPost,id:'ma4'},{...M.mR1,id:'ma5'},{...crea('12:00'),id:'ma6'},{...M.mSnk,id:'ma7'},{...M.mDin,id:'ma8'},
+    {id:'ma9',t:'21:30',kind:'sleep',title:'Coucher',detail:'Récupération = progression.'}]},
+  3:{name:'Mercredi', type:'train', kind:'vaa', s:'mer', title:'Va’a V1 lestée +10 kg', sub:'Rapa 26 · résistance sous fatigue · 1 h 30 max', tl:[
+    {...M.vR1,id:'me1'},{...crea('12:00'),id:'me2'},{...M.vPre,id:'me3'},
+    {id:'me4',t:'16:00',kind:'session',title:'Va’a V1 lestée — résistance sous fatigue',detail:'Rapa 26 · lest +10 kg · 75 à 90 min maximum',open:'vaa:mer'},
+    {id:'me5',t:'17:45',kind:'care',title:'Étirements 10 min',detail:'Dos, épaules, hanches · balle sous le pied'},
+    {...M.vPost,id:'me6'},{...M.vLast,id:'me7'},
+    {id:'me8',t:'22:00',kind:'sleep',title:'Coucher',detail:'Objectif 7 h 30 (muscu demain 5 h).'}]},
+  4:{name:'Jeudi', type:'train', kind:'muscu', s:'B', title:'Musculation B + calisthénie', sub:'Poussée, jambes & rotation · 5 h · ≈ 60 min', tl:[
+    {id:'je1',t:'04:45',kind:'care',title:'Lever · 500 ml d’eau',detail:'Une banane avant la séance si besoin.'},
+    {id:'je2',t:'05:00',kind:'session',title:'Musculation B — poussée, jambes & rotation',detail:'Échauffement 8 min · 7 exercices',open:'muscu:B'},
+    {id:'je3',t:'05:45',kind:'session',title:'Calisthénie 15 min',detail:'Circuit sans impact · 3 tours',open:'muscu:B'},
+    {...M.mPost,id:'je4'},{...M.mR1,id:'je5'},{...crea('12:00'),id:'je6'},{...M.mSnk,id:'je7'},{...M.mDin,id:'je8'},
+    {id:'je9',t:'21:30',kind:'sleep',title:'Coucher',detail:'Récupération = progression.'}]},
+  5:{name:'Vendredi', type:'train', kind:'cardio', s:'ven', title:'Cardio doux + mobilité', sub:'30–40 min sans impact · 15 min de mobilité', tl:[
+    {...M.fR1,id:'v1'},{...crea('12:00'),id:'v2'},{...M.fSnk,id:'v3'},
+    {id:'v4',t:'17:00',kind:'session',title:'Cardio doux 30–40 min',detail:'Vélo, natation ou rame facile · aisance respiratoire (on peut parler)',open:'vaa:ven'},
+    {id:'v5',t:'17:45',kind:'care',title:'Mobilité 15 min',detail:'Routine complète (voir onglet Va’a > Vendredi)',open:'vaa:ven'},
+    {...M.fDin,id:'v6'},
+    {id:'v7',t:'21:00',kind:'care',title:'Préparer le sac de course',detail:'Gourde, électrolytes, ravitaillement, crème solaire, rapa 24'},
+    {id:'v8',t:'21:30',kind:'sleep',title:'Coucher tôt',detail:'Départ 7 h demain.'}]},
+  6:{name:'Samedi', type:'long', kind:'vaa', s:'sam', title:'Course V1 — sortie longue', sub:'Rapa 24 · ≈ 50 coups/min · 20–25 km · départ 7 h', tl:[
+    {...M.sPre,id:'s1'},
+    {id:'s2',t:'07:00',kind:'session',title:'Course V1 — sortie longue',detail:'Rapa 24 · 20 à 25 km · endurance',open:'vaa:sam'},
+    {id:'s3',t:'08:30',kind:'supp',title:'Ravitaillement pendant la sortie',detail:'500–750 ml/h · électrolytes · au-delà de 2 h : 30–60 g de glucides/h'},
+    {...M.sRec,id:'s4'},{...M.sR1,id:'s5'},{...crea('12:00'),id:'s6'},
+    {id:'s7',t:'14:00',kind:'care',title:'Récupération active',detail:'Sieste 20 min ou marche douce · étirements légers'},
+    {...M.sSnk,id:'s8'},{...M.sDin,id:'s9'},
+    {id:'s10',t:'22:00',kind:'sleep',title:'Coucher',detail:'Objectif 8 h.'}]},
+  7:{name:'Dimanche', type:'rest', kind:'rest', s:'dim', title:'Repos & récupération', sub:'Mobilité douce · courses · préparation des repas', tl:[
+    {...M.dR1,id:'d1'},{...crea('12:00'),id:'d2'},{...M.dSnk,id:'d3'},
+    {id:'d4',t:'16:00',kind:'care',title:'Mobilité douce 20 min',detail:'Hanches, dos, épaules, mollets, voûte plantaire',open:'vaa:ven'},
+    {id:'d5',t:'17:00',kind:'care',title:'Courses + préparation des repas',detail:'Liste dans l’onglet Nutrition · cuire riz, patates douces, protéines pour 3 jours'},
+    {...M.dDin,id:'d6'},
+    {id:'d7',t:'21:00',kind:'care',title:'Bilan de la semaine',detail:'Pesée moyenne, douleurs, énergie : voir l’onglet Suivi'},
+    {id:'d8',t:'22:00',kind:'sleep',title:'Coucher',detail:'Objectif 7 h 30.'}]}
+};
+
+const WARMUP = [
+  '2 min : rotations d’épaules, cercles de bras et de hanches',
+  'Halo kettlebell 8 kg — 2 × 6 par sens',
+  'Écarté élastique (pull-apart) — 2 × 15',
+  'Charnière de hanche à vide + pont fessier — 2 × 10',
+  'Une série légère du premier exercice'
+];
+const MUSCU = {
+  A:{name:'Séance A — Tirage & chaîne postérieure', day:'Mardi', ex:[
+    {id:'a1',n:'Rowing haltère un bras (appui banc)',load:'17 kg',reps:'8–12 / bras',rest:'90 s',cue:'Dos plat, tire le coude vers la hanche : c’est la phase de traction de la pagaie.'},
+    {id:'a2',n:'Développé couché haltères',load:'2 × 17 kg',reps:'8–12',rest:'90 s',cue:'Omoplates serrées, descente contrôlée en 2–3 s.'},
+    {id:'a3',n:'Soulevé de terre jambes tendues (RDL)',load:'2 × 17 kg',reps:'10–12',rest:'90 s',cue:'Genoux légèrement fléchis, hanches vers l’arrière. Ménage genou et pied.'},
+    {id:'a4',n:'Pull-over haltère sur banc',load:'17 kg',reps:'10–12',rest:'75 s',cue:'Bras presque tendus, amplitude sans douleur d’épaule. Le grand dorsal est le moteur du coup de pagaie.'},
+    {id:'a5',n:'Tirage élastique « coup de pagaie »',load:'élastique 30 kg',reps:'12 / côté',rest:'60 s',cue:'Assis ou à genoux : rotation du buste puis tirage, comme dans le va’a.'},
+    {id:'a6',n:'Face pull élastique',load:'élastique',reps:'15',rest:'45 s',cue:'Coudes hauts, tire vers le front. Protège les épaules.'},
+    {id:'a7',n:'Roue abdominale (à genoux)',load:'poids du corps',reps:'8–10',rest:'60 s',fixed:3,cue:'Bassin rentré, ne creuse pas le bas du dos.'}
+  ]},
+  B:{name:'Séance B — Poussée, jambes & rotation', day:'Jeudi', ex:[
+    {id:'b1',n:'Goblet squat sur banc (box squat)',load:'17 kg',reps:'10–12',rest:'90 s',cue:'Assieds-toi sur le banc réglé à une hauteur sans douleur de genou, puis remonte.'},
+    {id:'b2',n:'Hip thrust sur banc',load:'17 kg (ou 2 × 17)',reps:'12–15',rest:'90 s',cue:'Pause 1 s en haut, fessiers serrés.'},
+    {id:'b3',n:'Développé incliné haltères',load:'2 × 17 kg',reps:'8–12',rest:'90 s',cue:'Banc à 30°, coudes à 45° du buste.'},
+    {id:'b4',n:'Rowing penché deux haltères',load:'2 × 17 kg',reps:'10–12',rest:'90 s',cue:'Buste à 45°, dos neutre, serre les omoplates en haut.'},
+    {id:'b5',n:'Élévations latérales',load:'2 × 8 kg',reps:'12–15',rest:'60 s',cue:'Monte jusqu’à l’horizontale, sans élan.'},
+    {id:'b6',n:'Rotation russe kettlebell (assis)',load:'8 kg',reps:'16–20 au total',rest:'45 s',fixed:3,cue:'La rotation vient du buste, pas seulement des bras.'},
+    {id:'b7',n:'Gainage latéral',load:'poids du corps',reps:'30–45 s / côté',rest:'45 s',fixed:3,cue:'Corps aligné, hanches hautes.'}
+  ]}
+};
+const CALI = ['Pompes (sur les genoux si besoin)','Dead bug','Superman (extension dorsale au sol)','Bird dog','Gainage ventral'];
+const COOLDOWN = ['Balle sous le pied : 1 min par pied','Étirement des mollets contre un mur : 2 × 30 s','Étirement pectoraux et grand dorsal : 30 s','Respiration lente 1 min'];
+const SETS_BY_PHASE = {1:3,2:4,3:4,4:2};
+
+const VAA = {
+  lun:{name:'Lundi — V1 lestée · force / endurance', boat:'V1 + lest 10 kg', rapa:'Rapa 26', cpm:'≈ 40', dur:'75–90 min max',
+    warm:['Rame facile 10 min en montant progressivement','3 × 20 coups accélérés, récupération 1 min','Vérifie l’arrimage du lest : bas, centré, solidement fixé'],
+    main:{1:['6 × 5 min à cadence 40–42 (RPE 7), récupération 2 min facile','6 × 30 coups puissance en départ lourd, récupération 1 min'],
+          2:['7 × 5 min à cadence 40–42 (RPE 7), récupération 2 min','8 × 30 coups puissance, récupération 1 min'],
+          3:['5 × 6 min à allure course (RPE 8), récupération 2 min','8 × 20 coups de départ explosif, récupération 1 min 30'],
+          4:['4 × 4 min (RPE 7), récupération 2 min','4 × 20 coups de départ · séance totale ≤ 60 min · lest réduit ou retiré']},
+    cool:['10 min de rame très facile','Étirements à terre : dos, épaules, ischios'],
+    notes:['Ne fais pas progresser en même temps le lest, la durée et l’intensité.','Douleur d’épaule ou de dos : arrête les blocs puissance.']},
+  mer:{name:'Mercredi — V1 lestée · résistance sous fatigue', boat:'V1 + lest 10 kg', rapa:'Rapa 26', cpm:'≈ 40', dur:'75–90 min max',
+    warm:['Rame facile 10 min','3 × 20 coups accélérés','Contrôle du lest'],
+    main:{1:['3 blocs : 8 min tempo (RPE 7) + 2 min fort (RPE 8), récupération 3 min','Finale : 4 × 1 min fort / 1 min facile'],
+          2:['4 blocs : 8 min tempo + 2 min fort, récupération 3 min','Finale : 4 × 1 min fort / 1 min facile'],
+          3:['3 blocs : 6 min allure course + 2 min sprint de course, récupération 3 min','Finale : 6 × 1 min fort / 1 min facile'],
+          4:['2 blocs : 6 min tempo + 2 min fort','Finale : 3 × 1 min · lest réduit ou retiré']},
+    cool:['10 min de rame très facile','Étirements dos, épaules, hanches'],
+    notes:['Objectif : garder une technique propre quand la fatigue arrive.','Hydratation pendant la séance si chaleur : 500 ml + électrolytes.']},
+  sam:{name:'Samedi — Course V1 · sortie longue', boat:'V1 sans lest', rapa:'Rapa 24', cpm:'≈ 50', dur:'20–25 km',
+    warm:['10 min faciles','2 × 1 min à allure course'],
+    main:{1:['20 km à allure régulière, cadence ≈ 50, RPE 6','Change de côté régulièrement'],
+          2:['22–25 km, le dernier quart en accélération progressive'],
+          3:['25 km dont 3 × 10 min à allure course, récupération 5 min'],
+          4:['12–15 km faciles + 5 × 1 min allure course']},
+    cool:['10 min très faciles','Étirements et récupération à terre'],
+    fuel:['Avant : petit-déjeuner riche en glucides 1 h 15 avant le départ','Pendant : 500 à 750 ml par heure + électrolytes (chaleur, transpiration)','Au-delà de 2 h : 30 à 60 g de glucides par heure (banane, boisson sucrée, pâte de fruits), à tester à l’entraînement','Après : récupération dans l’heure (whey + banane), puis vrai repas'],
+    notes:['Sortie spécifique de la semaine : c’est la priorité.','Surveille le pied et le genou après la sortie (journal).']},
+  ven:{name:'Vendredi — Cardio doux & mobilité', boat:'Hors va’a', rapa:'—', cpm:'—', dur:'30–40 min + 15 min',
+    warm:['5 min très faciles'],
+    main:{1:['30–40 min de vélo, natation ou rame facile, sans impact','Intensité : tu peux parler en phrases complètes'],2:null,3:null,4:['25–30 min très faciles']},
+    cool:[],
+    mobility:['Balle sous le pied : 1 min par pied','Mollets contre un mur : 2 × 30 s par jambe (jambe tendue puis fléchie)','Hanches 90/90 : 8 transitions','Rotations thoraciques au sol : 8 par côté','Chat-vache : 10 lents','Dislocations d’épaule à l’élastique : 2 × 10','Ischios allongé avec élastique : 2 × 30 s'],
+    notes:['Pas de course à pied ni de sauts : fasciite plantaire et genou.']}
+};
+
+const GROCERIES = [
+  ['g1','Poulet / dinde','2 kg'],['g2','Poisson','1,2 kg'],['g3','Viande maigre','1 kg'],['g4','Œufs','30'],
+  ['g5','Skyr / fromage blanc','3 kg'],['g6','Thon en boîte','3 boîtes'],['g7','Riz','1,5 kg cru'],['g8','Patates douces','2,5 kg'],
+  ['g9','Flocons d’avoine','500 g'],['g10','Pain complet','1'],['g11','Bananes','12'],['g12','Fruits variés','2 kg'],
+  ['g13','Légumes variés','3 kg'],['g14','Huile d’olive · noix · miel','vérifier'],['g15','Whey · créatine · électrolytes','vérifier le stock']
+];
+
+/* =====================================================================
+   UTILITAIRES & ÉTAT
+   ===================================================================== */
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad = n => String(n).padStart(2,'0');
+const keyOf = d => d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const parseKey = k => { const [y,m,d] = String(k).split('-').map(Number); return new Date(y, m-1, d); };
+const addDays = (k,n) => { const d = parseKey(k); d.setDate(d.getDate()+n); return keyOf(d); };
+const todayKey = () => keyOf(new Date());
+const dowOf = k => ((parseKey(k).getDay()+6)%7)+1;
+const mondayOf = k => addDays(k, 1-dowOf(k));
+const daysBetween = (a,b) => Math.round((parseKey(b)-parseKey(a))/864e5);
+const fmtDay = (k, o={weekday:'long',day:'numeric',month:'long'}) => { const s = parseKey(k).toLocaleDateString('fr-FR', o); return s.charAt(0).toUpperCase()+s.slice(1); };
+const num = v => { const n = parseFloat(String(v ?? '').replace(',','.')); return isFinite(n) ? n : null; };
+const fmtKg = n => (Math.round(n*10)/10).toLocaleString('fr-FR',{minimumFractionDigits:1,maximumFractionDigits:1});
+const toast = t => { const e=$('toast'); e.textContent=t; e.style.display='block'; clearTimeout(toast._t); toast._t=setTimeout(()=>e.style.display='none',2300); };
+
+const STORE = 'vaa-v1';
+function defaultSettings(){ return {start: mondayOf(todayKey()), startKg:120, targetKg:100, protein:180}; }
+function normalizeState(s){
+  s = s && typeof s === 'object' ? s : {};
+  const o = {v:2};
+  o.settings = Object.assign(defaultSettings(), (s.settings && typeof s.settings==='object') ? s.settings : {});
+  o.days = (s.days && typeof s.days==='object' && !Array.isArray(s.days)) ? s.days : {};
+  o.weights = (Array.isArray(s.weights) ? s.weights : []).map(w =>
+    typeof w === 'number' ? {d:null, kg:w} : (w && typeof w.kg === 'number' ? {d:w.d||null, kg:w.kg} : null)).filter(Boolean);
+  o.gym = (s.gym && typeof s.gym==='object' && !Array.isArray(s.gym)) ? s.gym : {};
+  o.vaa = Array.isArray(s.vaa) ? s.vaa.filter(x => x && x.d) : [];
+  o.shop = Array.isArray(s.shop) ? s.shop.filter(x => typeof x === 'string') : [];
+  o.notes = typeof s.notes === 'string' ? s.notes : '';
+  // Migration V1 : hydratation du jour enregistré
+  if (s.v !== 2 && s.day && s.water) { const d = o.days[s.day] || (o.days[s.day] = {}); if (!d.water) d.water = +s.water || 0; }
+  sortWeights(o.weights);
+  return o;
+}
+function sortWeights(arr){ arr.sort((a,b) => (a.d||'0000') < (b.d||'0000') ? -1 : (a.d||'0000') > (b.d||'0000') ? 1 : 0); }
+const loadLocal = () => { try { return JSON.parse(localStorage.getItem(STORE) || '{}'); } catch { return {}; } };
+let state = normalizeState(loadLocal());
+const saveLocalOnly = () => { try { localStorage.setItem(STORE, JSON.stringify(state)); } catch {} };
+const save = () => { saveLocalOnly(); queueCloudSave(); };
+
+const ui = {tab:'jour', date:todayKey(), muscu:null, vaa:null};
+
+const dayGet = k => state.days[k] || {};
+const dayMut = k => state.days[k] || (state.days[k] = {});
+const planOf = k => PLAN[dowOf(k)];
+function phaseOf(k){
+  const w = Math.floor(daysBetween(state.settings.start, k)/7) + 1;
+  const i = w <= 4 ? 1 : w <= 8 ? 2 : w <= 11 ? 3 : 4;
+  const p = PHASES[w < 1 ? 1 : i];
+  let label;
+  if (w < 1) label = 'Avant le programme · début ' + fmtDay(state.settings.start,{day:'numeric',month:'short'});
+  else if (w > 12) label = 'Programme terminé · maintien';
+  else label = 'Semaine ' + w + '/12 · ' + p.name;
+  return {week:w, i: w < 1 ? 1 : (w > 12 ? 2 : i), name:p.name, note:p.note, label, before:w<1, after:w>12};
+}
+function proteinOf(k){
+  const d = dayGet(k), done = d.done || [];
+  return planOf(k).tl.reduce((s,it) => s + (it.p && done.includes(it.id) ? it.p : 0), 0) + (+d.protX || 0);
+}
+function completionOf(k){ const tl = planOf(k).tl, done = dayGet(k).done || []; return tl.length ? tl.filter(i => done.includes(i.id)).length / tl.length : 0; }
+function latestWeight(){ return state.weights.length ? state.weights[state.weights.length-1].kg : state.settings.startKg; }
+function gymLog(k,s){ return (state.gym[k] && state.gym[k][s]) || null; }
+function lastPerf(exId, beforeKey){
+  const keys = Object.keys(state.gym).filter(k => k < beforeKey).sort().reverse();
+  for (const k of keys) for (const s of Object.keys(state.gym[k] || {})) {
+    const sets = state.gym[k][s] && state.gym[k][s].sets && state.gym[k][s].sets[exId];
+    if (sets && sets.some(x => x && (x.kg || x.reps))) return {k, sets};
+  }
+  return null;
+}
+const setsTxt = sets => sets.filter(x => x && (x.kg || x.reps)).map(x => (x.kg ? fmtKg(x.kg).replace(',0','')+' kg × ' : '') + (x.reps || '–')).join(' · ');
+
+/* =====================================================================
+   RENDU
+   ===================================================================== */
+function render(){
+  renderHeader();
+  ({jour:renderJour, semaine:renderSemaine, nutri:renderNutri, muscu:renderMuscu, vaa:renderVaa, suivi:renderSuivi, compte:renderCompte})[ui.tab]();
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === 'p-'+ui.tab));
+  document.querySelectorAll('.navbottom button').forEach(b => b.classList.toggle('on', b.dataset.tab === ui.tab));
+}
+
+function renderHeader(){
+  const ph = phaseOf(todayKey()), w = latestWeight(), t = state.settings.targetKg;
+  $('phaseChip').textContent = ph.label;
+  $('stWeight').textContent = fmtKg(w) + ' kg';
+  $('stLeft').textContent = w > t ? '−' + fmtKg(w - t) + ' kg' : 'Atteint';
+  $('stLeftLbl').textContent = 'vers ' + fmtKg(t).replace(',0','') + ' kg';
+  $('stWeek').textContent = ph.before ? 'J−' + (-daysBetween(state.settings.start, todayKey())) : ph.after ? 'Fini' : ph.week + '/12';
+}
+
+function weekStrip(k){
+  const mon = mondayOf(k), today = todayKey();
+  let h = '<div class="strip"><button class="nav" data-act="date" data-v="-7" aria-label="Semaine précédente">‹</button>';
+  for (let i = 0; i < 7; i++) {
+    const dk = addDays(mon, i), c = Math.round(completionOf(dk)*100);
+    h += `<button class="dbtn ${dk===k?'sel':''} ${dk===today?'today':''}" data-act="pick" data-k="${dk}"><small>${PLAN[i+1].name.slice(0,3).toUpperCase()}</small><b>${parseKey(dk).getDate()}</b><i><u style="width:${c}%"></u></i></button>`;
+  }
+  return h + '<button class="nav" data-act="date" data-v="7" aria-label="Semaine suivante">›</button></div>';
+}
+
+function sessionSummary(k){
+  const P = planOf(k), ph = phaseOf(k);
+  if (P.kind === 'muscu') {
+    const S = MUSCU[P.s], g = gymLog(k, P.s);
+    return `<p class="muted">${SETS_BY_PHASE[ph.i]} séries par exercice cette phase · ${S.ex.map(e=>esc(e.n)).join(' · ')}</p>
+      <div class="btnrow"><button class="btn" data-act="open" data-tab="muscu" data-s="${P.s}">${g && g.done ? 'Revoir la séance ✓' : 'Ouvrir la séance'}</button></div>`;
+  }
+  if (P.kind === 'vaa' || P.kind === 'cardio') {
+    const V = VAA[P.s], main = V.main[ph.i] || V.main[1];
+    const log = state.vaa.find(x => x.d === k && x.s === P.s);
+    return `<ul class="list">${main.map(m=>`<li>${esc(m)}</li>`).join('')}</ul>
+      ${log ? `<p class="pill g" style="margin:8px 0 0">Enregistré : ${log.km ? fmtKg(log.km).replace(',0','')+' km · ' : ''}${log.min ? log.min+' min · ' : ''}RPE ${log.rpe || '–'}</p>` : ''}
+      <div class="btnrow" style="margin-top:10px"><button class="btn" data-act="open" data-tab="vaa" data-s="${P.s}">Détail & journal de séance</button></div>`;
+  }
+  return `<p class="muted">Jour sans entraînement : repos, mobilité douce 20 min, courses et préparation des repas de la semaine.</p>
+    <div class="btnrow"><button class="btn sec" data-act="open" data-tab="vaa" data-s="ven">Routine mobilité</button><button class="btn ghost" data-act="tab" data-tab="nutri">Liste de courses</button></div>`;
+}
+
+function renderJour(){
+  const k = ui.date, P = planOf(k), T = DAYTYPES[P.type], ph = phaseOf(k), d = dayGet(k), done = d.done || [];
+  const target = state.settings.protein, prot = proteinOf(k), glassesTarget = Math.round(T.waterL*4), water = +d.water || 0;
+  const pct = Math.round(completionOf(k)*100), j = d.j || {};
+  const isToday = k === todayKey();
+  const wEntry = state.weights.find(x => x.d === k);
+  const tl = P.tl.slice().sort((a,b) => a.t.localeCompare(b.t)).map(it => `
+    <label class="tli ${it.kind} ${done.includes(it.id)?'done':''}">
+      <input type="checkbox" data-in="tick" data-id="${it.id}" ${done.includes(it.id)?'checked':''}>
+      <span class="t">${it.t}</span><span class="k"></span>
+      <span class="b"><b>${esc(it.title)}</b><small>${esc(it.detail||'')}</small>
+        ${it.p ? `<span class="pill n" style="margin-top:5px">≈ ${it.p} g protéines</span>` : ''}
+        ${it.open ? `<span class="open"><button type="button" class="btn sm sec" data-act="open" data-tab="${it.open.split(':')[0]}" data-s="${it.open.split(':')[1]}">Voir le détail</button></span>` : ''}
+      </span></label>`).join('');
+  const pain = Math.max(+j.foot||0, +j.knee||0);
+  $('p-jour').innerHTML = `
+    ${weekStrip(k)}
+    ${!isToday ? `<div class="row" style="margin:4px 0"><span class="muted">Tu consultes un autre jour.</span><button class="btn sm ghost" data-act="pick" data-k="${todayKey()}">Revenir à aujourd’hui</button></div>` : ''}
+    <div class="card hero">
+      <div class="kind">${esc(fmtDay(k))} · ${esc(T.label)}</div>
+      <h2>${esc(P.title)}</h2>
+      <div class="muted" style="color:#e3c9da">${esc(P.sub)}</div>
+      <div class="dim" style="margin-top:4px;color:#c9a9bd">${esc(ph.label)}</div>
+      <div class="grid3" style="margin-top:12px">
+        <div class="mini"><b style="font-size:14px">${T.kcal.replace(' – ','–')}</b><span>kcal repère</span></div>
+        <div class="mini"><b>${prot}/${target} g</b><span>protéines</span></div>
+        <div class="mini"><b>${fmtKg(T.waterL).replace(',0','')} L</b><span>eau + effort</span></div>
+      </div>
+    </div>
+    <div class="card"><div class="row"><h3>Séance du jour</h3><span class="pill">${esc(ph.name)}</span></div>${sessionSummary(k)}</div>
+    <div class="card">
+      <div class="row"><h3>Programme de la journée</h3><span class="pill ${pct===100?'g':''}">${pct} %</span></div>
+      <div class="bar ${pct===100?'g':''}"><i style="width:${pct}%"></i></div>
+      <div class="tl">${tl}</div>
+    </div>
+    <div class="card">
+      <div class="row"><h3>Protéines</h3><b class="pink" style="color:var(--pinkt)">${prot} / ${target} g</b></div>
+      <div class="bar"><i style="width:${Math.min(100,Math.round(prot/target*100))}%"></i></div>
+      <p class="dim" style="margin:6px 0">Les repas cochés comptent automatiquement. Ajoute un extra :</p>
+      <div class="btnrow"><button class="btn sm sec" data-act="prot" data-v="-10">−10 g</button><button class="btn sm sec" data-act="prot" data-v="10">+10 g</button><button class="btn sm sec" data-act="prot" data-v="25">+25 g (whey)</button></div>
+    </div>
+    <div class="card">
+      <div class="row"><h3>Hydratation</h3><b style="color:var(--blue)">${water} / ${glassesTarget} verres</b></div>
+      <div class="glasses">${Array.from({length:Math.max(glassesTarget,water)},(_,i)=>`<span class="glass ${i<water?'on':''}"></span>`).join('')}</div>
+      <p class="dim" style="margin:0 0 8px">Verres de 250 ml. Ajoute 500 à 750 ml par heure d’effort, plus s’il fait chaud.</p>
+      <div class="btnrow"><button class="btn sm sec" data-act="water" data-v="-1">−</button><button class="btn sm" data-act="water" data-v="1">+ 1 verre</button></div>
+    </div>
+    <div class="card">
+      <h3>Pesée ${isToday ? 'du matin' : 'du ' + esc(fmtDay(k,{day:'numeric',month:'short'}))}</h3>
+      <p class="dim" style="margin:0 0 6px">À jeun, après le passage aux toilettes, mêmes conditions chaque fois.</p>
+      <div class="row"><input id="wIn" type="number" inputmode="decimal" step="0.1" value="${wEntry ? wEntry.kg : ''}" placeholder="${fmtKg(latestWeight()).replace(',','.')}"><button class="btn" data-act="weight">Enregistrer</button></div>
+      ${wEntry ? `<p class="dim" style="margin:6px 0 0">Enregistré : ${fmtKg(wEntry.kg)} kg</p>` : ''}
+    </div>
+    <div class="card">
+      <h3>Journal du jour</h3>
+      <div class="field"><label>Énergie</label><div class="chips">${[1,2,3,4,5].map(n=>`<button data-act="j" data-f="energy" data-v="${n}" class="${+j.energy===n?'on':''}">${n}</button>`).join('')}</div></div>
+      <div class="grid2">
+        <div class="field"><label for="jSleep">Sommeil (heures)</label><input id="jSleep" type="number" inputmode="decimal" step="0.5" data-in="j" data-f="sleep" value="${esc(j.sleep ?? '')}" placeholder="7,5"></div>
+        <div class="field"><label for="jRpe">Effort perçu de la journée (1–10)</label><input id="jRpe" type="number" inputmode="numeric" min="1" max="10" data-in="j" data-f="rpe" value="${esc(j.rpe ?? '')}"></div>
+      </div>
+      <div class="field"><label>Douleur pied (fasciite) : <span id="vFoot">${+j.foot||0}</span>/10</label><input type="range" min="0" max="10" data-in="j" data-f="foot" value="${+j.foot||0}"></div>
+      <div class="field"><label>Douleur genou : <span id="vKnee">${+j.knee||0}</span>/10</label><input type="range" min="0" max="10" data-in="j" data-f="knee" value="${+j.knee||0}"></div>
+      <div id="painNote">${painNote(pain)}</div>
+      <div class="field"><label for="jNote">Notes (repas, sensations, récupération)</label><textarea id="jNote" data-in="j" data-f="note" placeholder="Ce que tu as mangé, comment s’est passée la séance…">${esc(j.note ?? '')}</textarea></div>
+    </div>`;
+}
+function painNote(p){
+  return p >= 4 ? `<div class="note warn" style="margin-bottom:8px">Douleur à ${p}/10 : remplace l’intensité par de la mobilité, évite les impacts et surveille l’évolution. Si elle persiste plusieurs jours, consulte un professionnel de santé.</div>` : '';
+}
+
+function renderSemaine(){
+  const mon = mondayOf(ui.date), sun = addDays(mon, 6);
+  const keys = Array.from({length:7}, (_,i) => addDays(mon,i));
+  const gymDone = keys.filter(k => Object.values(state.gym[k]||{}).some(x => x && x.done)).length;
+  const vaaW = state.vaa.filter(x => x.d >= mon && x.d <= sun && x.s !== 'ven');
+  const km = vaaW.reduce((s,x) => s + (+x.km||0), 0);
+  const ws = state.weights.filter(x => x.d && x.d >= mon && x.d <= sun);
+  const avg = ws.length ? ws.reduce((s,x)=>s+x.kg,0)/ws.length : null;
+  const ph = phaseOf(mon);
+  $('p-semaine').innerHTML = `
+    <div class="row"><button class="btn sm ghost" data-act="date" data-v="-7">‹ Préc.</button><h2 style="margin:0;text-align:center">Semaine du ${esc(fmtDay(mon,{day:'numeric',month:'short'}))}</h2><button class="btn sm ghost" data-act="date" data-v="7">Suiv. ›</button></div>
+    <p class="muted" style="text-align:center;margin:4px 0 8px">${esc(ph.label)}</p>
+    <div class="grid3">
+      <div class="mini"><b>${gymDone}/2</b><span>séances muscu</span></div>
+      <div class="mini"><b>${fmtKg(km).replace(',0','')} km</b><span>va'a (${vaaW.length} sorties)</span></div>
+      <div class="mini"><b>${avg ? fmtKg(avg) : '—'}</b><span>poids moyen</span></div>
+    </div>
+    <div class="note" style="margin-top:10px"><b>${esc(ph.name)}</b> — ${esc(ph.note)}</div>
+    ${keys.map((k,i) => { const P = PLAN[i+1], c = Math.round(completionOf(k)*100), T = DAYTYPES[P.type];
+      return `<button class="card daycard ${k===ui.date?'sel':''}" data-act="pick" data-k="${k}" data-go="jour">
+        <span class="dn"><b>${P.name.slice(0,3)}</b><small>${parseKey(k).getDate()}/${parseKey(k).getMonth()+1}</small></span>
+        <span class="info"><b>${esc(P.title)}</b><small>${esc(P.sub)}</small><small>${esc(T.label)} · ${T.kcal} kcal</small></span>
+        <span class="pill ${c===100?'g':c?'':'n'}">${c} %</span></button>`; }).join('')}
+    <div class="note">Le samedi est la sortie spécifique : c’est la priorité de la semaine. En semaine, le lest (+10 kg) développe force et résistance, mais un seul paramètre progresse à la fois : lest, durée ou intensité.</div>`;
+}
+
+function renderNutri(){
+  const k = ui.date, P = planOf(k), T = DAYTYPES[P.type], target = state.settings.protein;
+  const meals = P.tl.filter(i => i.kind === 'meal' || i.kind === 'supp').sort((a,b)=>a.t.localeCompare(b.t));
+  const planned = meals.reduce((s,m)=>s+(m.p||0),0);
+  const shop = GROCERIES.map(([id,n,q]) => `<label class="shop ${state.shop.includes(id)?'checked':''}"><input type="checkbox" data-in="shop" data-id="${id}" ${state.shop.includes(id)?'checked':''}><span>${esc(n)}</span><small>${esc(q)}</small></label>`).join('');
+  $('p-nutri').innerHTML = `
+    <div class="row"><button class="btn sm ghost" data-act="date" data-v="-1">‹</button><h2 style="margin:0;text-align:center">${esc(fmtDay(k,{weekday:'long',day:'numeric',month:'short'}))}</h2><button class="btn sm ghost" data-act="date" data-v="1">›</button></div>
+    <div class="card hero" style="margin-top:10px">
+      <div class="kind">${esc(T.label)}</div>
+      <h2>${T.kcal} kcal</h2>
+      <div class="grid3" style="margin-top:10px">
+        <div class="mini"><b>${target} g</b><span>protéines</span></div>
+        <div class="mini"><b>≈ ${T.G} g</b><span>glucides</span></div>
+        <div class="mini"><b>≈ ${T.L} g</b><span>lipides</span></div>
+      </div>
+      <p class="dim" style="margin:10px 0 0;color:#d5b4c8">Fenêtre habituelle 12 h – 20 h (16/8 flexible). ${P.kind==='muscu'?'Ce jour : fenêtre élargie dès la fin de séance.':P.type==='long'?'Ce jour : on mange avant et pendant la sortie, la récupération prime.':''}</p>
+    </div>
+    <div class="card">
+      <div class="row"><h3>Repas du jour</h3><span class="pill">≈ ${planned} g prot. prévues</span></div>
+      ${meals.map(m => `<div class="tli ${m.kind}" style="cursor:default"><span class="t">${m.t}</span><span class="k"></span><span class="b"><b>${esc(m.title)}</b><small>${esc(m.detail)}</small>${m.p?`<span class="pill n" style="margin-top:5px">≈ ${m.p} g protéines</span>`:''}</span></div>`).join('')}
+      ${planned < target - 5 ? `<p class="dim" style="margin:8px 0 0">Il manque ≈ ${target-planned} g : ajoute un shaker de whey (≈ 25 g) ou 250 g de skyr.</p>` : ''}
+    </div>
+    <div class="card">
+      <h3>Repères par type de jour</h3>
+      <table class="tbl"><tr><th>Jour</th><th>kcal</th><th>P</th><th>G</th><th>L</th></tr>
+      ${Object.values(DAYTYPES).map(t=>`<tr><td>${esc(t.label)}</td><td>${t.kcal}</td><td>${t.P}</td><td>${t.G}</td><td>${t.L}</td></tr>`).join('')}</table>
+      <p class="dim" style="margin:8px 0 0">Lun · Mar · Mer · Jeu · Ven = entraînement · Sam = sortie longue · Dim = repos.</p>
+    </div>
+    <div class="card">
+      <h3>Compléments</h3>
+      <ul class="list"><li><b>Créatine</b> : 3–5 g chaque jour avec un repas.</li><li><b>Whey</b> : 25–30 g seulement si les repas ne suffisent pas pour atteindre ${target} g.</li><li><b>Électrolytes</b> : sorties longues, chaleur, forte transpiration.</li><li>BCAA et glutamine : non prioritaires si l’apport en protéines est suffisant.</li></ul>
+    </div>
+    <div class="card">
+      <h3>Ajuster selon la tendance</h3>
+      <ul class="list"><li>Perte de poids moyenne visée : environ 0,5 à 0,8 kg par semaine (moyenne de la semaine, pas la pesée du jour).</li><li>Plus d’1 kg/semaine avec fatigue ou performances en baisse : ajoute ≈ 150–200 kcal (glucides autour des séances).</li><li>Stagnation 2 semaines de suite : retire ≈ 150 kcal les jours de repos.</li></ul>
+    </div>
+    <div class="card">
+      <div class="row"><h3>Courses de la semaine</h3><span class="pill">${state.shop.length} / ${GROCERIES.length}</span></div>
+      ${shop}
+      <div class="btnrow" style="margin-top:10px"><button class="btn sm" data-act="copyShop">Copier la liste</button><button class="btn sm ghost" data-act="resetShop">Réinitialiser</button></div>
+    </div>
+    <div class="note">Les chiffres sont des repères de départ, pas une prescription médicale. Adapte-les à ta progression réelle et demande un avis professionnel en cas de douleur persistante ou de problème de santé.</div>`;
+}
+
+function renderMuscu(){
+  const k = ui.date, P = planOf(k);
+  const s = ui.muscu || (P.kind === 'muscu' ? P.s : (dowOf(k) <= 2 || dowOf(k) >= 5 ? 'A' : 'B'));
+  ui.muscu = s;
+  const S = MUSCU[s], ph = phaseOf(k), nSets = SETS_BY_PHASE[ph.i], log = gymLog(k,s) || {sets:{}};
+  const exHtml = S.ex.map(e => {
+    const n = e.fixed || nSets, cur = (log.sets && log.sets[e.id]) || [], last = lastPerf(e.id, k);
+    const lastSet = last ? last.sets.filter(x=>x&&x.kg).slice(-1)[0] : null;
+    return `<div class="ex">
+      <b>${esc(e.n)}</b>
+      <div class="presc">${n} × ${esc(e.reps)} · ${esc(e.load)} · repos ${esc(e.rest)}</div>
+      <div class="cue">${esc(e.cue)}</div>
+      <div class="sets">${Array.from({length:n},(_,i)=>{ const v = cur[i] || {}; return `<div class="setrow"><span>${i+1}</span>
+        <input type="number" inputmode="decimal" step="0.5" placeholder="${lastSet ? lastSet.kg : 'kg'}" aria-label="Série ${i+1} kg" data-in="set" data-ex="${e.id}" data-i="${i}" data-f="kg" value="${v.kg ?? ''}"><em>×</em>
+        <input type="number" inputmode="numeric" placeholder="rép" aria-label="Série ${i+1} répétitions" data-in="set" data-ex="${e.id}" data-i="${i}" data-f="reps" value="${v.reps ?? ''}"></div>`; }).join('')}</div>
+      ${last ? `<div class="last">Dernière fois (${esc(fmtDay(last.k,{day:'numeric',month:'short'}))}) : ${esc(setsTxt(last.sets))}</div>` : ''}
+    </div>`; }).join('');
+  $('p-muscu').innerHTML = `
+    <div class="seg"><button class="${s==='A'?'on':''}" data-act="muscuS" data-s="A">Séance A · Mardi</button><button class="${s==='B'?'on':''}" data-act="muscuS" data-s="B">Séance B · Jeudi</button></div>
+    <div class="card hero">
+      <div class="kind">${esc(ph.label)}</div>
+      <h2>${esc(S.name)}</h2>
+      <div class="muted" style="color:#e3c9da">${nSets} séries par exercice principal · repos indiqués · ≈ 45 min + 15 min de calisthénie</div>
+      <div class="dim" style="margin-top:6px;color:#c9a9bd">Carnet enregistré à la date du ${esc(fmtDay(k,{weekday:'long',day:'numeric',month:'short'}))}${P.kind!=='muscu'?' (pas un jour de muscu prévu)':''}</div>
+    </div>
+    <div class="card"><h3>Échauffement · 8 min</h3><ul class="list">${WARMUP.map(w=>`<li>${esc(w)}</li>`).join('')}</ul></div>
+    <div class="card"><div class="row"><h3>Exercices</h3><span class="dim">kg × répétitions</span></div>${exHtml}</div>
+    <div class="card"><h3>Calisthénie · 15 min</h3><p class="muted" style="margin:0 0 4px">3 tours : 40 s d’effort / 20 s de récupération, 1 min entre les tours.</p><ul class="list">${CALI.map(c=>`<li>${esc(c)}</li>`).join('')}</ul><p class="dim" style="margin:6px 0 0">Aucun saut ni impact : pied et genou préservés.</p></div>
+    <div class="card"><h3>Retour au calme · 5 min</h3><ul class="list">${COOLDOWN.map(c=>`<li>${esc(c)}</li>`).join('')}</ul></div>
+    <div class="note"><b>Progression</b> — double progression : quand toutes les séries atteignent le haut de la fourchette, ajoute 1–2 répétitions, ralentis la descente (3 s) ou marque une pause en bas. Avec des haltères de 8 et 17 kg, on progresse surtout par les répétitions et le tempo. Arrête l’exercice si une douleur dépasse 3/10.</div>
+    <div class="btnrow" style="margin:12px 0"><button class="btn" style="flex:1" data-act="gymDone" data-s="${s}">${log.done ? 'Séance terminée ✓ (annuler)' : 'Marquer la séance terminée'}</button></div>`;
+}
+
+function renderVaa(){
+  const k = ui.date, P = planOf(k);
+  const s = ui.vaa || (['lun','mer','sam','ven'].includes(P.s) ? P.s : 'sam');
+  ui.vaa = s;
+  const V = VAA[s], ph = phaseOf(k), main = V.main[ph.i] || V.main[1];
+  const log = state.vaa.find(x => x.d === k && x.s === s) || {};
+  const hist = state.vaa.filter(x => x.s !== 'ven').slice().sort((a,b)=>b.d.localeCompare(a.d)).slice(0,8);
+  // km par semaine (6 dernières)
+  const mon0 = mondayOf(todayKey()), weeks = Array.from({length:6},(_,i)=>addDays(mon0,-7*(5-i)));
+  const kms = weeks.map(m => state.vaa.filter(x => x.s!=='ven' && x.d>=m && x.d<=addDays(m,6)).reduce((t,x)=>t+(+x.km||0),0));
+  const maxKm = Math.max(10, ...kms);
+  const list = a => `<ul class="list">${a.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
+  $('p-vaa').innerHTML = `
+    <div class="seg"><button class="${s==='lun'?'on':''}" data-act="vaaS" data-s="lun">Lundi</button><button class="${s==='mer'?'on':''}" data-act="vaaS" data-s="mer">Mercredi</button><button class="${s==='sam'?'on':''}" data-act="vaaS" data-s="sam">Samedi</button><button class="${s==='ven'?'on':''}" data-act="vaaS" data-s="ven">Ven · mobilité</button></div>
+    <div class="card hero">
+      <div class="kind">${esc(ph.label)}</div>
+      <h2>${esc(V.name)}</h2>
+      <div class="grid3" style="margin-top:10px"><div class="mini"><b>${esc(V.rapa)}</b><span>${esc(V.boat)}</span></div><div class="mini"><b>${esc(V.cpm)}</b><span>coups / min</span></div><div class="mini"><b>${esc(V.dur)}</b><span>volume</span></div></div>
+    </div>
+    <div class="card"><h3>Échauffement</h3>${list(V.warm)}</div>
+    <div class="card"><div class="row"><h3>Corps de séance</h3><span class="pill">${esc(ph.name)}</span></div>${list(main)}
+      <details><summary>Voir les autres phases</summary>${[1,2,3,4].filter(i=>V.main[i]).map(i=>`<p class="dim" style="margin:8px 0 2px"><b>${PHASES[i].name}</b> (${PHASES[i].w})</p>${list(V.main[i])}`).join('')}</details></div>
+    ${V.mobility ? `<div class="card"><h3>Routine mobilité · 15 min</h3>${list(V.mobility)}</div>` : ''}
+    ${V.cool.length ? `<div class="card"><h3>Retour au calme</h3>${list(V.cool)}</div>` : ''}
+    ${V.fuel ? `<div class="card"><h3>Hydratation & ravitaillement</h3>${list(V.fuel)}</div>` : ''}
+    <div class="note">${V.notes.map(esc).join('<br>')}</div>
+    <div class="card">
+      <h3>Journal de séance</h3>
+      <p class="dim" style="margin:0 0 6px">Enregistré pour le ${esc(fmtDay(k,{weekday:'long',day:'numeric',month:'short'}))}. Change de jour dans l’onglet Jour.</p>
+      <div class="grid2">
+        ${s!=='ven'?`<div class="field"><label for="vKm">Distance (km)</label><input id="vKm" type="number" inputmode="decimal" step="0.1" value="${esc(log.km ?? '')}"></div>`:''}
+        <div class="field"><label for="vMin">Durée (min)</label><input id="vMin" type="number" inputmode="numeric" value="${esc(log.min ?? '')}"></div>
+        ${s!=='ven'?`<div class="field"><label for="vCpm">Cadence moyenne</label><input id="vCpm" type="number" inputmode="numeric" value="${esc(log.cpm ?? '')}" placeholder="${esc(V.cpm.replace('≈ ',''))}"></div>`:''}
+        <div class="field"><label for="vRpe">Effort perçu (1–10)</label><input id="vRpe" type="number" inputmode="numeric" min="1" max="10" value="${esc(log.rpe ?? '')}"></div>
+      </div>
+      <div class="field"><label for="vNote">Notes (conditions, mer, sensations, ravitaillement)</label><textarea id="vNote">${esc(log.note ?? '')}</textarea></div>
+      <button class="btn" data-act="vaaSave" data-s="${s}">${log.d ? 'Mettre à jour' : 'Enregistrer la séance'}</button>
+    </div>
+    <div class="card"><h3>Kilomètres va'a par semaine</h3>
+      <div class="bars">${kms.map((v,i)=>`<div><em>${v?fmtKg(v).replace(',0',''):''}</em><i style="height:${Math.round(v/maxKm*70)}px"></i><small>${parseKey(weeks[i]).getDate()}/${parseKey(weeks[i]).getMonth()+1}</small></div>`).join('')}</div>
+    </div>
+    <div class="card"><h3>Dernières sorties</h3>${hist.length ? hist.map(x=>`<div class="hist"><span>${esc(fmtDay(x.d,{weekday:'short',day:'numeric',month:'short'}))} · ${esc(VAA[x.s]?VAA[x.s].rapa:'')}</span><span>${x.km?fmtKg(x.km).replace(',0','')+' km · ':''}${x.min?x.min+' min · ':''}RPE ${x.rpe||'–'}</span></div>`).join('') : '<p class="muted">Aucune sortie enregistrée.</p>'}</div>`;
+}
+
+function weightChart(){
+  const pts = state.weights.filter(w => w.d).slice(-40);
+  if (pts.length < 2) return '<p class="muted">Enregistre au moins deux pesées datées pour voir la courbe.</p>';
+  const t = state.settings.targetKg, W=320, H=150, padL=34, padR=8, padT=10, padB=20;
+  const ys = pts.map(p=>p.kg).concat([t]); const min = Math.floor(Math.min(...ys)-1), max = Math.ceil(Math.max(...ys)+1);
+  const d0 = pts[0].d, span = Math.max(1, daysBetween(d0, pts[pts.length-1].d));
+  const x = d => padL + daysBetween(d0, d)/span*(W-padL-padR), y = v => padT + (max-v)/(max-min)*(H-padT-padB);
+  const line = pts.map(p=>`${x(p.d).toFixed(1)},${y(p.kg).toFixed(1)}`).join(' ');
+  // moyenne mobile 7 jours
+  const avg = pts.map(p => { const win = pts.filter(q => daysBetween(q.d,p.d) >= 0 && daysBetween(q.d,p.d) < 7); return [p.d, win.reduce((s,q)=>s+q.kg,0)/win.length]; });
+  const avgLine = avg.map(([d,v])=>`${x(d).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Courbe de poids">
+    ${[max, Math.round((max+min)/2), min].map(v=>`<line x1="${padL}" x2="${W-padR}" y1="${y(v)}" y2="${y(v)}" stroke="#2f2737"/><text x="${padL-6}" y="${y(v)+4}" fill="#7d7282" font-size="10" text-anchor="end">${v}</text>`).join('')}
+    <line x1="${padL}" x2="${W-padR}" y1="${y(t)}" y2="${y(t)}" stroke="#3ddc97" stroke-dasharray="4 4"/><text x="${W-padR}" y="${y(t)-4}" fill="#3ddc97" font-size="10" text-anchor="end">objectif ${t}</text>
+    <polyline points="${line}" fill="none" stroke="#5a2346" stroke-width="1.5"/>
+    <polyline points="${avgLine}" fill="none" stroke="#ff4fb2" stroke-width="2.5" stroke-linejoin="round"/>
+    ${pts.map(p=>`<circle cx="${x(p.d).toFixed(1)}" cy="${y(p.kg).toFixed(1)}" r="2.5" fill="#ff4fb2"/>`).join('')}
+    <text x="${padL}" y="${H-5}" fill="#7d7282" font-size="10">${esc(fmtDay(pts[0].d,{day:'numeric',month:'short'}))}</text>
+    <text x="${W-padR}" y="${H-5}" fill="#7d7282" font-size="10" text-anchor="end">${esc(fmtDay(pts[pts.length-1].d,{day:'numeric',month:'short'}))}</text></svg>
+    <p class="dim" style="margin:4px 0 0">Trait épais : moyenne sur 7 jours (plus fiable que la pesée du jour).</p>`;
+}
+
+function renderSuivi(){
+  const st = state.settings, w = latestWeight(), today = todayKey();
+  const lost = st.startKg - w, total = st.startKg - st.targetKg, pct = total > 0 ? Math.max(0, Math.min(100, Math.round(lost/total*100))) : 0;
+  const dated = state.weights.filter(x=>x.d);
+  const avgOf = (from,to) => { const a = dated.filter(x=>x.d>=from && x.d<=to); return a.length ? a.reduce((s,x)=>s+x.kg,0)/a.length : null; };
+  const a1 = avgOf(addDays(today,-6), today), a0 = avgOf(addDays(today,-13), addDays(today,-7));
+  const rate = a1 != null && a0 != null ? a1 - a0 : null;
+  const last7 = Array.from({length:7},(_,i)=>addDays(today,-i)).map(k=>dayGet(k).j||{});
+  const avgJ = f => { const v = last7.map(j=>num(j[f])).filter(x=>x!=null); return v.length ? v.reduce((s,x)=>s+x,0)/v.length : null; };
+  const prot7 = Array.from({length:7},(_,i)=>proteinOf(addDays(today,-i)));
+  const protDays = prot7.filter(p=>p>0);
+  const allEx = [...MUSCU.A.ex, ...MUSCU.B.ex];
+  const perfRows = allEx.map(e => { const l = lastPerf(e.id, addDays(today,1)); return l ? `<tr><td>${esc(e.n)}</td><td>${esc(setsTxt(l.sets))}</td><td class="dim">${esc(fmtDay(l.k,{day:'numeric',month:'short'}))}</td></tr>` : ''; }).join('');
+  $('p-suivi').innerHTML = `
+    <h2>Progression</h2>
+    <div class="card hero">
+      <div class="kind">Objectif ${fmtKg(st.targetKg).replace(',0','')} kg · départ ${fmtKg(st.startKg).replace(',0','')} kg</div>
+      <h2>${lost >= 0 ? '−' : '+'}${fmtKg(Math.abs(lost))} kg</h2>
+      <div class="bar g" style="margin:8px 0"><i style="width:${pct}%"></i></div>
+      <div class="grid3"><div class="mini"><b>${a1!=null?fmtKg(a1):'—'}</b><span>moyenne 7 j</span></div><div class="mini"><b>${rate!=null?(rate>0?'+':'')+fmtKg(rate):'—'}</b><span>kg / semaine</span></div><div class="mini"><b>${pct} %</b><span>du chemin</span></div></div>
+    </div>
+    <div class="card"><h3>Courbe de poids</h3>${weightChart()}</div>
+    <div class="card"><h3>Dernières pesées</h3>${state.weights.length ? state.weights.slice().reverse().slice(0,10).map(x=>{ const i = state.weights.indexOf(x); return `<div class="hist"><span>${x.d ? esc(fmtDay(x.d,{weekday:'short',day:'numeric',month:'short'})) : 'Ancienne mesure (V1)'}</span><span><b>${fmtKg(x.kg)} kg</b> <button class="x" data-act="delW" data-i="${i}" aria-label="Supprimer">×</button></span></div>`; }).join('') : '<p class="muted">Aucune pesée. Enregistre-la dans l’onglet Jour.</p>'}</div>
+    <div class="card"><h3>Bien-être · 7 derniers jours</h3>
+      <div class="grid2">
+        <div class="mini"><b>${avgJ('energy')!=null?fmtKg(avgJ('energy')).replace(',0','')+' / 5':'—'}</b><span>énergie moyenne</span></div>
+        <div class="mini"><b>${avgJ('sleep')!=null?fmtKg(avgJ('sleep')).replace(',0','')+' h':'—'}</b><span>sommeil moyen</span></div>
+        <div class="mini"><b>${avgJ('foot')!=null?fmtKg(avgJ('foot')).replace(',0','')+' / 10':'—'}</b><span>douleur pied</span></div>
+        <div class="mini"><b>${avgJ('knee')!=null?fmtKg(avgJ('knee')).replace(',0','')+' / 10':'—'}</b><span>douleur genou</span></div>
+      </div>
+      <p class="dim" style="margin:8px 0 0">Protéines : ${protDays.length ? Math.round(protDays.reduce((s,x)=>s+x,0)/protDays.length)+' g/jour en moyenne sur '+protDays.length+' jour(s) suivi(s)' : 'pas encore de repas cochés'}.</p>
+    </div>
+    <div class="card"><h3>Muscu — dernières performances</h3>${perfRows ? `<table class="tbl"><tr><th>Exercice</th><th>Séries</th><th></th></tr>${perfRows}</table>` : '<p class="muted">Remplis le carnet dans l’onglet Muscu.</p>'}</div>`;
+}
+
+function renderCompte(){
+  const st = state.settings;
+  $('settingsBox').innerHTML = `
+    <h3>Programme</h3>
+    <div class="grid2">
+      <div class="field"><label for="sStart">Début du programme (lundi)</label><input id="sStart" type="date" value="${esc(st.start)}"></div>
+      <div class="field"><label for="sProt">Protéines / jour (g)</label><input id="sProt" type="number" inputmode="numeric" value="${esc(st.protein)}"></div>
+      <div class="field"><label for="sStartKg">Poids de départ (kg)</label><input id="sStartKg" type="number" inputmode="decimal" step="0.1" value="${esc(st.startKg)}"></div>
+      <div class="field"><label for="sTarget">Objectif (kg)</label><input id="sTarget" type="number" inputmode="decimal" step="0.1" value="${esc(st.targetKg)}"></div>
+    </div>
+    <button class="btn" data-act="saveSettings">Enregistrer les réglages</button>
+    <p class="dim" style="margin:8px 0 0">Le programme dure 12 semaines : Fondation (S1–4), Développement (S5–8), Spécifique (S9–11), Affûtage (S12).</p>`;
+}
+
+/* =====================================================================
+   ACTIONS
+   ===================================================================== */
+const ACT = {
+  tab: b => { ui.tab = b.dataset.tab; render(); window.scrollTo(0,0); },
+  pick: b => { ui.date = b.dataset.k; if (b.dataset.go) ui.tab = b.dataset.go; ui.muscu = null; ui.vaa = null; render(); if (b.dataset.go) window.scrollTo(0,0); },
+  date: b => { ui.date = addDays(ui.date, +b.dataset.v); ui.muscu = null; ui.vaa = null; render(); },
+  open: b => { ui.tab = b.dataset.tab; if (ui.tab === 'muscu') ui.muscu = b.dataset.s; if (ui.tab === 'vaa') ui.vaa = b.dataset.s; render(); window.scrollTo(0,0); },
+  muscuS: b => { ui.muscu = b.dataset.s; render(); },
+  vaaS: b => { ui.vaa = b.dataset.s; render(); },
+  prot: b => { const d = dayMut(ui.date); d.protX = Math.max(0, (+d.protX||0) + (+b.dataset.v)); save(); render(); },
+  water: b => { const d = dayMut(ui.date); d.water = Math.max(0, Math.min(30, (+d.water||0) + (+b.dataset.v))); save(); render(); },
+  weight: () => {
+    const v = num($('wIn').value);
+    if (!v || v < 30 || v > 300) { toast('Saisis un poids valide'); return; }
+    const i = state.weights.findIndex(x => x.d === ui.date);
+    if (i >= 0) state.weights[i].kg = v; else state.weights.push({d:ui.date, kg:v});
+    sortWeights(state.weights); save(); render(); toast('Pesée enregistrée');
+  },
+  delW: b => { const i = +b.dataset.i; if (!state.weights[i]) return; if (!confirm('Supprimer cette pesée ?')) return; state.weights.splice(i,1); save(); render(); },
+  j: b => { const d = dayMut(ui.date); d.j = d.j || {}; d.j[b.dataset.f] = +b.dataset.v === +d.j[b.dataset.f] ? null : +b.dataset.v; save(); render(); },
+  gymDone: b => {
+    const s = b.dataset.s, k = ui.date; state.gym[k] = state.gym[k] || {}; const g = state.gym[k][s] = state.gym[k][s] || {sets:{}};
+    g.done = !g.done;
+    const P = planOf(k), d = dayMut(k); d.done = d.done || [];
+    P.tl.filter(it => it.open === 'muscu:'+s).forEach(it => { d.done = g.done ? [...new Set([...d.done, it.id])] : d.done.filter(x => x !== it.id); });
+    save(); render(); toast(g.done ? 'Séance enregistrée 💪' : 'Séance marquée non terminée');
+  },
+  vaaSave: b => {
+    const s = b.dataset.s, k = ui.date, g = id => $(id) ? num($(id).value) : null;
+    const e = {d:k, s, km:g('vKm'), min:g('vMin'), cpm:g('vCpm'), rpe:g('vRpe'), note:$('vNote').value.trim()};
+    const i = state.vaa.findIndex(x => x.d === k && x.s === s);
+    if (i >= 0) state.vaa[i] = e; else state.vaa.push(e);
+    const P = planOf(k), d = dayMut(k); d.done = d.done || [];
+    P.tl.filter(it => it.kind === 'session' && it.open === 'vaa:'+s).forEach(it => { if (!d.done.includes(it.id)) d.done.push(it.id); });
+    save(); render(); toast('Séance enregistrée');
+  },
+  copyShop: async () => { const t = GROCERIES.map(([id,n,q]) => (state.shop.includes(id)?'[x] ':'[ ] ')+n+' — '+q).join('\n'); try { await navigator.clipboard.writeText(t); toast('Liste copiée'); } catch { toast('Copie impossible dans ce navigateur'); } },
+  resetShop: () => { state.shop = []; save(); render(); },
+  saveSettings: () => {
+    const st = state.settings, sd = $('sStart').value;
+    if (sd) st.start = mondayOf(sd);
+    const p = num($('sProt').value), a = num($('sStartKg').value), t = num($('sTarget').value);
+    if (p && p > 50 && p < 400) st.protein = Math.round(p);
+    if (a && a > 30 && a < 300) st.startKg = a;
+    if (t && t > 30 && t < 300) st.targetKg = t;
+    save(); render(); toast('Réglages enregistrés');
+  },
+  export: () => {
+    const blob = new Blob([JSON.stringify({app:'Vaa Performance', version:2, exported_at:new Date().toISOString(), data:state}, null, 2)], {type:'application/json'});
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'vaa-performance-' + todayKey() + '.json'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href), 1000); toast('Sauvegarde téléchargée');
+  },
+  importPick: () => $('importFile').click()
+};
+
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-act]'); if (!b || !ACT[b.dataset.act]) return;
+  if (b.tagName === 'BUTTON') e.preventDefault();
+  ACT[b.dataset.act](b, e);
+});
+
+let jTimer = null;
+document.addEventListener('input', e => {
+  const t = e.target, kind = t.dataset && t.dataset.in; if (!kind) return;
+  if (kind === 'j') {
+    const d = dayMut(ui.date); d.j = d.j || {};
+    const f = t.dataset.f; d.j[f] = t.type === 'range' ? +t.value : t.value;
+    if (f === 'foot') $('vFoot').textContent = t.value;
+    if (f === 'knee') $('vKnee').textContent = t.value;
+    if (f === 'foot' || f === 'knee') $('painNote').innerHTML = painNote(Math.max(+d.j.foot||0, +d.j.knee||0));
+    clearTimeout(jTimer); jTimer = setTimeout(save, 500);
+  } else if (kind === 'set') {
+    const k = ui.date, s = ui.muscu; state.gym[k] = state.gym[k] || {}; const g = state.gym[k][s] = state.gym[k][s] || {sets:{}};
+    g.sets = g.sets || {}; const arr = g.sets[t.dataset.ex] = g.sets[t.dataset.ex] || [];
+    const i = +t.dataset.i; arr[i] = arr[i] || {}; arr[i][t.dataset.f] = num(t.value);
+    for (let n = 0; n < arr.length; n++) if (!arr[n]) arr[n] = {};
+    clearTimeout(jTimer); jTimer = setTimeout(save, 500);
+  }
+});
+document.addEventListener('change', e => {
+  const t = e.target, kind = t.dataset && t.dataset.in;
+  if (kind === 'tick') {
+    const d = dayMut(ui.date); d.done = d.done || [];
+    d.done = t.checked ? [...new Set([...d.done, t.dataset.id])] : d.done.filter(x => x !== t.dataset.id);
+    save(); render();
+  } else if (kind === 'shop') {
+    state.shop = t.checked ? [...new Set([...state.shop, t.dataset.id])] : state.shop.filter(x => x !== t.dataset.id);
+    save(); render();
+  }
+});
+$('importFile').addEventListener('change', async e => {
+  const f = e.target.files && e.target.files[0]; e.target.value = ''; if (!f) return;
+  try {
+    const j = JSON.parse(await f.text()); const data = j && j.data ? j.data : j;
+    if (!data || typeof data !== 'object') throw new Error();
+    if (!confirm('Remplacer les données actuelles par celles du fichier ?')) return;
+    state = normalizeState(data); save(); render(); toast('Données importées');
+  } catch { toast('Fichier invalide'); }
+});
+$('enableNotifications').onclick = async () => {
+  if (!('Notification' in window)) { toast('Notifications non prises en charge ici'); return; }
+  const p = await Notification.requestPermission();
+  if (p === 'granted') { try { new Notification('Vaa Performance', {body:'Notifications autorisées sur cet appareil.'}); } catch {} toast('Autorisation accordée'); }
+  else toast('Autorisation non accordée');
+};
+// Nouveau jour : revenir sur aujourd'hui quand l'app est rouverte
+let lastToday = todayKey();
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && todayKey() !== lastToday) { if (ui.date === lastToday) ui.date = todayKey(); lastToday = todayKey(); render(); }
+});
+</script>
+
+<script>
+/* =====================================================================
+   CLOUD : SUPABASE + GOOGLE DRIVE
+   ===================================================================== */
 const SUPABASE_URL = "https://afecpapkjkhfatlxnbpr.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_0rNh4iXDT2uoCUzOJ8FSsQ_HaPxKZEt";
-let cloudUser = null;
-let cloudSaveTimer = null;
-let supabaseClient = null;
-const cloudStatus = (label, message) => {
-  const status = document.getElementById('cloudStatus');
-  const msg = document.getElementById('cloudMessage');
-  if (status) status.textContent = label;
-  if (msg) msg.textContent = message;
-};
-function initCloud() {
+let cloudUser = null, cloudSaveTimer = null, supabaseClient = null;
+function cloudStatus(label, message){ const s=$('cloudStatus'), m=$('cloudMessage'); if (s) s.textContent = label; if (m) m.textContent = message; }
+function queueCloudSave(){ if (!cloudUser) return; clearTimeout(cloudSaveTimer); cloudSaveTimer = setTimeout(syncToCloud, 1200); }
+function initCloud(){
   handleDriveReturn();
-  if (!window.supabase || !window.supabase.createClient) {
-    cloudStatus('SDK indisponible', 'Impossible de charger Supabase. Vérifie ta connexion Internet puis actualise la page.');
-    return;
-  }
+  if (!window.supabase || !window.supabase.createClient) { cloudStatus('SDK indisponible', 'Impossible de charger Supabase. Vérifie ta connexion Internet puis actualise la page.'); return; }
   supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
-  document.getElementById('signInBtn').addEventListener('click', () => authenticate('signin'));
-  document.getElementById('signUpBtn').addEventListener('click', () => authenticate('signup'));
-  document.getElementById('syncNowBtn').addEventListener('click', syncToCloud);
-  document.getElementById('signOutBtn').addEventListener('click', async () => {
-    await supabaseClient.auth.signOut();
-    cloudUser = null;
-    document.getElementById('authForm').style.display = 'block';
-    document.getElementById('signedInActions').style.display = 'none';
-    document.getElementById('driveCard').style.display = 'none';
+  $('signInBtn').addEventListener('click', () => authenticate('signin'));
+  $('signUpBtn').addEventListener('click', () => authenticate('signup'));
+  $('syncNowBtn').addEventListener('click', syncToCloud);
+  $('signOutBtn').addEventListener('click', async () => {
+    await supabaseClient.auth.signOut(); cloudUser = null;
+    $('authForm').style.display = 'block'; $('signedInActions').style.display = 'none'; $('driveCard').style.display = 'none';
     cloudStatus('Déconnecté', 'Les données locales restent sur cet appareil.');
   });
-  document.getElementById('driveConnectBtn').addEventListener('click', connectDrive);
-  document.getElementById('driveBackupBtn').addEventListener('click', backupDrive);
-  document.getElementById('driveRestoreBtn').addEventListener('click', restoreDrive);
-  document.getElementById('driveDisconnectBtn').addEventListener('click', disconnectDrive);
-  supabaseClient.auth.getSession().then(({data, error}) => {
-    if (error) cloudStatus('Erreur session', error.message);
-    else if (data.session) loadCloudData(data.session.user);
-  });
-  supabaseClient.auth.onAuthStateChange((_event, session) => {
-    if (session && (!cloudUser || cloudUser.id !== session.user.id)) loadCloudData(session.user);
-  });
+  $('driveConnectBtn').addEventListener('click', connectDrive);
+  $('driveBackupBtn').addEventListener('click', backupDrive);
+  $('driveRestoreBtn').addEventListener('click', restoreDrive);
+  $('driveDisconnectBtn').addEventListener('click', disconnectDrive);
+  supabaseClient.auth.getSession().then(({data, error}) => { if (error) cloudStatus('Erreur session', error.message); else if (data.session) loadCloudData(data.session.user); });
+  supabaseClient.auth.onAuthStateChange((_e, session) => { if (session && (!cloudUser || cloudUser.id !== session.user.id)) loadCloudData(session.user); });
 }
-async function authenticate(mode) {
-  const email = document.getElementById('authEmail').value.trim();
-  const password = document.getElementById('authPassword').value;
-  if (!email || password.length < 8) {
-    cloudStatus('À compléter', 'Saisis une adresse e-mail valide et un mot de passe de 8 caractères minimum.');
-    return;
-  }
-  if (!supabaseClient) {
-    cloudStatus('SDK indisponible', 'Actualise la page. Si le problème persiste, vérifie la connexion Internet.');
-    return;
-  }
+async function authenticate(mode){
+  const email = $('authEmail').value.trim(), password = $('authPassword').value;
+  if (!email || password.length < 8) { cloudStatus('À compléter', 'Saisis une adresse e-mail valide et un mot de passe de 8 caractères minimum.'); return; }
+  if (!supabaseClient) { cloudStatus('SDK indisponible', 'Actualise la page.'); return; }
   cloudStatus('Connexion…', 'Demande envoyée à Supabase.');
-  const {data, error} = mode === 'signup'
-    ? await supabaseClient.auth.signUp({email, password})
-    : await supabaseClient.auth.signInWithPassword({email, password});
-  if (error) {
-    cloudStatus('Erreur Supabase', error.message);
-    return;
-  }
+  const {data, error} = mode === 'signup' ? await supabaseClient.auth.signUp({email, password}) : await supabaseClient.auth.signInWithPassword({email, password});
+  if (error) { cloudStatus('Erreur', error.message); return; }
   if (data.session && data.user) await loadCloudData(data.user);
-  else cloudStatus('Vérifie ton e-mail', 'Compte demandé. Consulte ta boîte mail pour confirmer ton adresse avant de te connecter.');
+  else cloudStatus('Vérifie ton e-mail', 'Compte demandé. Confirme ton adresse depuis ta boîte mail avant de te connecter.');
 }
-async function loadCloudData(user) {
+async function loadCloudData(user){
   cloudUser = user;
-  document.getElementById('authForm').style.display = 'none';
-  document.getElementById('signedInActions').style.display = 'flex';
-  document.getElementById('driveCard').style.display = 'block';
+  $('authForm').style.display = 'none'; $('signedInActions').style.display = 'flex'; $('driveCard').style.display = 'block';
   cloudStatus('Chargement…', 'Récupération de tes données personnelles.');
   const {data, error} = await supabaseClient.from('user_app_data').select('data').eq('user_id', user.id).maybeSingle();
   if (error) { cloudStatus('Erreur cloud', error.message); return; }
   if (data && data.data) {
     state = normalizeState({...state, ...data.data});
-    const rolled = rollDay();
-    saveLocalOnly();
-    render();
-    if (rolled) queueCloudSave();
-    cloudStatus('Synchronisé', 'Tes données ont été chargées depuis Supabase.');
-  } else {
-    await syncToCloud();
-  }
+    saveLocalOnly(); render();
+    if (data.data.v !== 2) await syncToCloud(); // migration V1 -> V2 envoyée au cloud
+    cloudStatus('Synchronisé', 'Tes données sont à jour. Les modifications sont envoyées automatiquement.');
+  } else await syncToCloud();
   refreshDriveStatus();
 }
-
-/* ---------- Google Drive (via Edge Function google-oauth) ---------- */
+async function syncToCloud(){
+  if (!cloudUser || !supabaseClient) return;
+  cloudStatus('Synchronisation…', 'Enregistrement de tes données.');
+  const {error} = await supabaseClient.from('user_app_data').upsert({user_id: cloudUser.id, data: state, updated_at: new Date().toISOString()}, {onConflict:'user_id'});
+  if (error) cloudStatus('Erreur cloud', error.message);
+  else cloudStatus('Synchronisé', 'Données enregistrées à ' + new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}) + '.');
+}
 const DRIVE_ERRORS = {
   access_denied: "Autorisation refusée sur l'écran Google.",
   expired: 'La demande a expiré. Relance la connexion.',
@@ -129,147 +962,72 @@ const DRIVE_ERRORS = {
   token: "Échange du code Google impossible. Vérifie l'URI de redirection et le secret client.",
   db: "Enregistrement de l'accès impossible côté Supabase."
 };
-async function driveCall(action, extra = {}) {
+async function driveCall(action, extra = {}){
   const {data, error} = await supabaseClient.functions.invoke('google-oauth', {body: {action, ...extra}});
-  if (error) {
-    let msg = error.message;
-    try { const b = await error.context.json(); if (b && b.error) msg = b.error; } catch {}
-    throw new Error(msg);
-  }
+  if (error) { let msg = error.message; try { const b = await error.context.json(); if (b && b.error) msg = b.error; } catch {} throw new Error(msg); }
   if (data && data.error) throw new Error(data.error);
   return data;
 }
-function driveBusy(on) {
-  ['driveConnectBtn','driveBackupBtn','driveRestoreBtn','driveDisconnectBtn'].forEach(id => document.getElementById(id).disabled = on);
-}
-function driveUI(label, message, connected, ok) {
-  const pill = document.getElementById('driveStatus');
-  pill.textContent = label;
-  pill.classList.toggle('ok', !!ok);
-  document.getElementById('driveMessage').textContent = message;
-  if (connected !== undefined) {
-    document.getElementById('driveConnectRow').style.display = connected ? 'none' : 'flex';
-    document.getElementById('driveActionsRow').style.display = connected ? 'flex' : 'none';
-  }
+function driveBusy(on){ ['driveConnectBtn','driveBackupBtn','driveRestoreBtn','driveDisconnectBtn'].forEach(id => $(id).disabled = on); }
+function driveUI(label, message, connected, ok){
+  const pill = $('driveStatus'); pill.textContent = label; pill.classList.toggle('g', !!ok);
+  $('driveMessage').textContent = message;
+  if (connected !== undefined) { $('driveConnectRow').style.display = connected ? 'none' : 'flex'; $('driveActionsRow').style.display = connected ? 'flex' : 'none'; }
 }
 const fmtDate = iso => iso ? new Date(iso).toLocaleString('fr-FR', {dateStyle:'short', timeStyle:'short'}) : '';
-async function refreshDriveStatus() {
+async function refreshDriveStatus(){
   if (!cloudUser) return;
   try {
     const s = await driveCall('status');
-    if (s.connected) {
-      driveUI('Connecté', (s.email ? 'Compte ' + s.email + '. ' : '') + (s.last_backup_at ? 'Dernière sauvegarde : ' + fmtDate(s.last_backup_at) + '.' : 'Aucune sauvegarde pour le moment.'), true, true);
-    } else {
-      driveUI('Non connecté', 'Connecte Google Drive pour sauvegarder tes données dans un fichier visible dans ton Drive.', false);
-    }
-  } catch (e) {
-    driveUI('Indisponible', 'Service Drive injoignable : ' + e.message, false);
-  }
+    if (s.connected) driveUI('Connecté', (s.email ? 'Compte ' + s.email + '. ' : '') + (s.last_backup_at ? 'Dernière sauvegarde : ' + fmtDate(s.last_backup_at) + '.' : 'Aucune sauvegarde pour le moment.'), true, true);
+    else driveUI('Non connecté', 'Connecte Google Drive pour sauvegarder tes données dans un fichier visible dans ton Drive.', false);
+  } catch (e) { driveUI('Indisponible', 'Service Drive injoignable : ' + e.message, false); }
 }
-async function connectDrive() {
-  driveBusy(true);
-  driveUI('Connexion…', 'Ouverture de Google…');
-  try {
-    const {url} = await driveCall('start', {return_to: location.origin + location.pathname});
-    location.href = url;
-  } catch (e) {
-    driveUI('Erreur', e.message, false);
-    driveBusy(false);
-  }
+async function connectDrive(){
+  driveBusy(true); driveUI('Connexion…', 'Ouverture de Google…');
+  try { const {url} = await driveCall('start', {return_to: location.origin + location.pathname}); location.href = url; }
+  catch (e) { driveUI('Erreur', e.message, false); driveBusy(false); }
 }
-async function backupDrive() {
-  driveBusy(true);
-  driveUI('Sauvegarde…', 'Synchronisation puis envoi vers Google Drive.');
+async function backupDrive(){
+  driveBusy(true); driveUI('Sauvegarde…', 'Synchronisation puis envoi vers Google Drive.');
   try {
-    clearTimeout(cloudSaveTimer);
-    await syncToCloud();
+    clearTimeout(cloudSaveTimer); await syncToCloud();
     const r = await driveCall('backup');
-    driveUI('Connecté', 'Sauvegardé dans « ' + r.name + ' » le ' + fmtDate(r.last_backup_at) + '.', true, true);
-    toast('Sauvegarde Drive effectuée');
-  } catch (e) {
-    driveUI('Erreur', e.message);
-    if (/connect/i.test(e.message)) refreshDriveStatus();
-  } finally { driveBusy(false); }
+    driveUI('Connecté', 'Sauvegardé dans « ' + r.name + ' » le ' + fmtDate(r.last_backup_at) + '.', true, true); toast('Sauvegarde Drive effectuée');
+  } catch (e) { driveUI('Erreur', e.message); if (/connect/i.test(e.message)) refreshDriveStatus(); }
+  finally { driveBusy(false); }
 }
-async function restoreDrive() {
+async function restoreDrive(){
   driveBusy(true);
   try {
-    const r = await driveCall('restore');
-    const when = r.exported_at ? ' du ' + fmtDate(r.exported_at) : '';
+    const r = await driveCall('restore'); const when = r.exported_at ? ' du ' + fmtDate(r.exported_at) : '';
     if (!confirm('Remplacer les données actuelles par la sauvegarde Google Drive' + when + ' ?')) return;
-    state = normalizeState(r.data);
-    rollDay();
-    save();
-    render();
-    toast('Données restaurées depuis Drive');
-    refreshDriveStatus();
-  } catch (e) {
-    driveUI('Erreur', e.message);
-  } finally { driveBusy(false); }
+    state = normalizeState(r.data); save(); render(); toast('Données restaurées depuis Drive'); refreshDriveStatus();
+  } catch (e) { driveUI('Erreur', e.message); }
+  finally { driveBusy(false); }
 }
-async function disconnectDrive() {
-  if (!confirm("Déconnecter Google Drive ? Le fichier de sauvegarde reste dans ton Drive.")) return;
+async function disconnectDrive(){
+  if (!confirm('Déconnecter Google Drive ? Le fichier de sauvegarde reste dans ton Drive.')) return;
   driveBusy(true);
-  try {
-    await driveCall('disconnect');
-    driveUI('Non connecté', 'Google Drive déconnecté. Le fichier de sauvegarde est toujours dans ton Drive.', false);
-  } catch (e) {
-    driveUI('Erreur', e.message);
-  } finally { driveBusy(false); }
+  try { await driveCall('disconnect'); driveUI('Non connecté', 'Google Drive déconnecté. Le fichier de sauvegarde est toujours dans ton Drive.', false); }
+  catch (e) { driveUI('Erreur', e.message); }
+  finally { driveBusy(false); }
 }
-function handleDriveReturn() {
-  const p = new URLSearchParams(location.search);
-  const st = p.get('drive');
+function handleDriveReturn(){
+  const p = new URLSearchParams(location.search), st = p.get('drive');
   if (!st) return;
+  ui.tab = 'compte';
   if (st === 'connected') toast('Google Drive connecté');
-  else {
-    const code = p.get('drive_msg') || '';
-    const msg = DRIVE_ERRORS[code] || ('Connexion Google impossible (' + (code || 'erreur') + ').');
-    setTimeout(() => driveUI('Erreur', msg, false), 0);
-    toast('Connexion Google Drive échouée');
-  }
-  p.delete('drive'); p.delete('drive_msg');
-  const q = p.toString();
+  else { const code = p.get('drive_msg') || ''; const msg = DRIVE_ERRORS[code] || ('Connexion Google impossible (' + (code || 'erreur') + ').'); setTimeout(() => driveUI('Erreur', msg, false), 0); toast('Connexion Google Drive échouée'); }
+  p.delete('drive'); p.delete('drive_msg'); const q = p.toString();
   history.replaceState(null, '', location.pathname + (q ? '?' + q : '') + location.hash);
 }
-async function syncToCloud() {
-  if (!cloudUser || !supabaseClient) return;
-  cloudStatus('Synchronisation…', 'Enregistrement de tes données.');
-  const {error} = await supabaseClient.from('user_app_data').upsert({
-    user_id: cloudUser.id, data: state, updated_at: new Date().toISOString()
-  }, {onConflict:'user_id'});
-  if (error) cloudStatus('Erreur cloud', error.message);
-  else cloudStatus('Synchronisé', 'Tes données sont enregistrées dans ton espace Supabase.');
-}
-function queueCloudSave() {
-  if (!cloudUser) return;
-  clearTimeout(cloudSaveTimer);
-  cloudSaveTimer = setTimeout(syncToCloud, 800);
-}
-</script>
 
-<script>
-// [heure, libellé, jours affichés, jours JS (0 = dimanche … 6 = samedi)]
-const ALL=[0,1,2,3,4,5,6];
-const tasks=[['05:00','Musculation maison','Mardi / Jeudi',[2,4]],['05:45','Calisthenics 15 min','Mardi / Jeudi',[2,4]],['12:00','Repas + créatine','Tous les jours',ALL],['15:30','Collation avant V1','Lundi / Mercredi',[1,3]],['16:00','V1 lestée · Rapa 26','Lundi / Mercredi',[1,3]],['07:00','Course V1 · Rapa 24','Samedi',[6]],['19:00','Dîner et récupération','Tous les jours',ALL]];
-const dayKey=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
-const todayTasks=()=>{const d=new Date().getDay();return tasks.map((t,i)=>({t,i})).filter(x=>x.t[3].includes(d)).sort((a,b)=>a.t[0].localeCompare(b.t[0]))};
-function normalizeState(s){s=s&&typeof s==='object'?s:{};s.done=Array.isArray(s.done)?s.done:[];s.shop=Array.isArray(s.shop)?s.shop:[];s.water=+s.water||0;s.weights=Array.isArray(s.weights)?s.weights:[];s.notes=typeof s.notes==='string'?s.notes:'';return s}
-// Tâches cochées et hydratation repartent de zéro chaque jour (liste de courses, poids et notes sont conservés).
-function rollDay(){if(state.day!==dayKey()){state.done=[];state.water=0;state.day=dayKey();return true}return false}
-const days=[['Lundi','V1 lestée · 16h','Rapa 26 · +10 kg · force/endurance · max 1h30'],['Mardi','Musculation · 05h','Force maison + 15 min calisthenics'],['Mercredi','V1 lestée · 16h','Rapa 26 · résistance sous fatigue · max 1h30'],['Jeudi','Musculation · 05h','Force maison + 15 min calisthenics'],['Vendredi','Cardio léger','30–40 min + mobilité'],['Samedi','Course V1 · 07h','Rapa 24 · 20–25 km · endurance'],['Dimanche','Récupération','Repos + mobilité douce']];
-const groceries=[['Poulet / dinde','1,5 kg'],['Œufs','18 unités'],['Poisson','1 kg'],['Viande maigre','1 kg'],['Riz','1 kg'],['Patates douces','1,5 kg'],['Bananes','7 à 10'],['Légumes variés','2 kg'],['Fruits','1,5 kg'],['Whey / créatine','Vérifier le stock']];
-const load=()=>{try{return JSON.parse(localStorage.getItem('vaa-v1')||'{}')}catch{return {}}};let state=normalizeState(load());rollDay();
-const saveLocalOnly=()=>localStorage.setItem('vaa-v1',JSON.stringify(state));const save=()=>{saveLocalOnly();queueCloudSave()};const toast=t=>{let e=document.getElementById('toast');e.textContent=t;e.style.display='block';setTimeout(()=>e.style.display='none',2200)};
-function renderTasks(){const list=todayTasks();let el=document.getElementById('tasks');const lbl=new Date().toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});document.getElementById('todayLabel').textContent=lbl.charAt(0).toUpperCase()+lbl.slice(1)+' · '+days[(new Date().getDay()+6)%7][1];el.innerHTML=list.map(({t,i})=>`<div class="task ${state.done.includes(i)?'done':''}"><input type="checkbox" id="task${i}" data-task="${i}" ${state.done.includes(i)?'checked':''}><label for="task${i}">${t[1]}<small>${t[0]} · ${t[2]}</small></label></div>`).join('');el.querySelectorAll('[data-task]').forEach(x=>x.onchange=()=>{let i=+x.dataset.task;state.done=x.checked?[...state.done.filter(n=>n!==i),i]:state.done.filter(n=>n!==i);save();renderTasks()});const n=list.filter(x=>state.done.includes(x.i)).length;let p=list.length?Math.round(n/list.length*100):0;document.getElementById('progressLabel').textContent=p+' % réalisé';document.getElementById('progressBar').style.width=p+'%'}
-function renderPlan(){const t=(new Date().getDay()+6)%7;document.getElementById('weekPlan').innerHTML=days.map((d,i)=>`<div class="card day ${i===t?'today':''}">${i===t?'<span class="pill">Aujourd\'hui</span>':''}<b>${d[0]}</b><span>${d[1]}</span><small>${d[2]}</small></div>`).join('')}
-function renderShop(){document.getElementById('shoppingList').innerHTML=groceries.map((g,i)=>`<div class="shop ${state.shop.includes(i)?'checked':''}"><input type="checkbox" data-shop="${i}" ${state.shop.includes(i)?'checked':''}><span>${g[0]}</span><small>${g[1]}</small></div>`).join('');document.getElementById('shopCount').textContent=state.shop.length+' / '+groceries.length;document.querySelectorAll('[data-shop]').forEach(x=>x.onchange=()=>{let i=+x.dataset.shop;state.shop=x.checked?[...state.shop,i]:state.shop.filter(n=>n!==i);save();renderShop()})}
-function render(){renderTasks();renderPlan();renderShop();document.getElementById('waterLabel').textContent=state.water+' / 8 verres';document.getElementById('weightHistory').textContent=state.weights.length?'Dernière pesée : '+state.weights.at(-1)+' kg · '+state.weights.length+' mesure(s)':'Aucune pesée enregistrée.';document.getElementById('foodNotes').value=state.notes;let w=state.weights.at(-1)||120;document.getElementById('headWeight').textContent=w+' kg';document.getElementById('weightInput').value=w}
-document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button,.panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active')});
-document.getElementById('waterPlus').onclick=()=>{state.water=Math.min(20,state.water+1);save();render()};document.getElementById('waterMinus').onclick=()=>{state.water=Math.max(0,state.water-1);save();render()};document.getElementById('saveWeight').onclick=()=>{let v=Number(document.getElementById('weightInput').value);if(v>0&&v<400){state.weights.push(v);save();render();toast('Pesée enregistrée')}};document.getElementById('saveNotes').onclick=()=>{state.notes=document.getElementById('foodNotes').value;save();toast('Notes enregistrées')};document.getElementById('resetList').onclick=()=>{state.shop=[];save();renderShop()};document.getElementById('exportBackup').onclick=()=>{const blob=new Blob([JSON.stringify({app:'Vaa Performance',version:1,exported_at:new Date().toISOString(),data:state},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vaa-performance-backup.json';a.click();URL.revokeObjectURL(a.href);toast('Sauvegarde JSON téléchargée')};
-document.getElementById('copyList').onclick=async()=>{let txt=groceries.map((g,i)=>(state.shop.includes(i)?'[x] ':'[ ] ')+g[0]+' — '+g[1]).join('\n');try{await navigator.clipboard.writeText(txt);toast('Liste copiée')}catch{toast('Copie non disponible dans ce navigateur')}};
-document.getElementById('enableNotifications').onclick=async()=>{if(!('Notification'in window)){toast('Notifications non prises en charge ici');return}let p=await Notification.requestPermission();if(p==='granted'){new Notification('Vaa Performance',{body:'Notifications autorisées sur cet appareil.'});toast('Autorisation accordée')}else toast('Autorisation non accordée')};
-document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&rollDay()){save();render()}});
-if('serviceWorker'in navigator && location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});saveLocalOnly();render();
-if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initCloud); else initCloud();
-</script></body></html>
+/* ---------- Démarrage ---------- */
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(() => {});
+saveLocalOnly();
+initCloud();
+render();
+</script>
+</body>
+</html>
