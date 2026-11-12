@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#17131c"><meta name="description" content="Vaa Performance — programme, nutrition et suivi personnel">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>Vaa Performance</title>
+<style>
+:root{--pink:#f50091;--pink2:#ff64b7;--ink:#17131c;--muted:#786f7b;--bg:#f7f4f7;--card:#fff;--line:#eee7ee;--green:#16865b}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding-bottom:90px}header{background:var(--ink);color:white;padding:22px 18px 20px;border-radius:0 0 24px 24px}.brand{display:flex;align-items:center;gap:11px}.logo{width:43px;height:43px;border-radius:14px;background:var(--pink);display:grid;place-items:center;font-size:23px}.brand b{letter-spacing:.8px}.brand small{display:block;color:#f5a4d0;font-size:11px;letter-spacing:1.4px;margin-top:3px}.hero{margin-top:22px}.hero h1{font-size:25px;margin:0 0 5px}.hero p{margin:0;color:#d7cbd7;font-size:13px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:18px}.stat{background:#2b2430;border-radius:13px;padding:11px}.stat strong{display:block;color:var(--pink2);font-size:20px}.stat span{font-size:11px;color:#ded2df}.wrap{max-width:720px;margin:auto;padding:15px}.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;background:#ebe5ec;border-radius:14px;padding:5px;position:sticky;top:6px;z-index:5}.tabs button{border:0;background:transparent;border-radius:10px;padding:10px 3px;font-size:12px;color:#655b68}.tabs button.active{background:white;color:var(--pink);font-weight:700;box-shadow:0 2px 8px #25132912}.panel{display:none;padding-top:17px}.panel.active{display:block}h2{font-size:19px;margin:4px 0 13px}.muted{color:var(--muted);font-size:13px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px;margin:10px 0;box-shadow:0 3px 14px #29142b08}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.task{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid var(--line)}.task:last-child{border:0}.task input,.shop input{accent-color:var(--pink);width:20px;height:20px}.task label{flex:1}.task small{display:block;color:var(--muted);font-size:12px;margin-top:3px}.done label{text-decoration:line-through;color:#968b98}.pill{font-size:11px;background:#fde4f2;color:#b50068;border-radius:30px;padding:5px 9px;font-weight:700}.bar{height:8px;background:#f0e9f0;border-radius:20px;overflow:hidden}.bar i{display:block;height:100%;background:var(--pink);width:0}.btn{border:0;background:var(--pink);color:white;font-weight:700;border-radius:12px;padding:12px 15px;font-size:14px}.btn.secondary{background:#f7e5f0;color:#a0005b}.btn.ghost{background:white;color:var(--pink);border:1px solid #f2c5df}.btnrow{display:flex;gap:8px;flex-wrap:wrap}input[type=number],input[type=text],input[type=password],input[type=email],textarea,select{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px;font:inherit;background:white;color:var(--ink)}textarea{min-height:85px;resize:vertical}.field{margin:10px 0}.field label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px}.day{border-left:4px solid var(--pink);padding:12px 13px}.day b{display:block}.day span{display:block;color:var(--pink);font-weight:650;margin:4px 0}.day small{color:var(--muted)}.shop{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.shop span{flex:1}.shop small{color:var(--muted)}.shop.checked span{text-decoration:line-through;color:#9b919d}.note{background:#fff5fb;border:1px solid #f8d4e9;border-radius:13px;padding:12px;color:#6d3154;font-size:13px;line-height:1.45}.foot{text-align:center;color:#988c99;font-size:11px;padding:20px 0}.toast{position:fixed;bottom:85px;left:50%;transform:translateX(-50%);background:#211a25;color:white;padding:11px 15px;border-radius:20px;font-size:13px;display:none;z-index:20}.navbottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:10px max(12px,env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:8px;z-index:10}.navbottom button{max-width:680px;flex:1}.pink{color:var(--pink)}.btn:disabled{opacity:.5}.day.today{background:#fff5fb;border-left-width:7px}.day .pill{float:right}.pill.ok{background:#dff3ea;color:var(--green)}.dayhead{font-size:13px;color:var(--muted);margin:-8px 0 10px}@media(min-width:600px){header{padding:26px max(22px,calc((100% - 680px)/2))}.wrap{padding:20px}.tabs button{font-size:14px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="logo">🌊</div><div><b>VAA PERFORMANCE</b><small>TRAIN · EAT · RECOVER</small></div></div><div class="hero"><h1>Ta progression, chaque jour.</h1><p>Programme personnel · 12 semaines · Objectif 100 kg</p></div><div class="stats"><div class="stat"><strong id="headWeight">120 kg</strong><span>Poids actuel</span></div><div class="stat"><strong>180 g</strong><span>Protéines / jour</span></div><div class="stat"><strong>16/8</strong><span>Jeûne flexible</span></div></div></header>
+<main class="wrap"><nav class="tabs"><button class="active" data-tab="today">Aujourd'hui</button><button data-tab="plan">Planning</button><button data-tab="food">Nutrition</button><button data-tab="shop">Courses</button></nav>
+<section id="today" class="panel active"><div class="row"><h2>Mes tâches</h2><span class="pill" id="progressLabel">0 % réalisé</span></div><p class="dayhead" id="todayLabel"></p><div class="bar"><i id="progressBar"></i></div><div class="card" id="tasks"></div><div class="card"><div class="row"><b>Hydratation</b><b class="pink" id="waterLabel">0 / 8 verres</b></div><p class="muted">Repère indicatif : adapte selon chaleur, transpiration et durée de l'effort.</p><div class="btnrow"><button class="btn secondary" id="waterMinus">−</button><button class="btn" id="waterPlus">+ Ajouter un verre</button></div></div><div class="card"><h2>Poids du jour</h2><div class="field"><label>Poids (kg)</label><input id="weightInput" type="number" step="0.1" value="120"></div><button class="btn" id="saveWeight">Enregistrer le poids</button><p class="muted" id="weightHistory">Aucune pesée enregistrée.</p></div></section>
+<section id="plan" class="panel"><h2>Planning hebdomadaire</h2><div id="weekPlan"></div><div class="note">Les séances lestées en V1 restent limitées à 1 h 30 en semaine. Fixe solidement le lest, garde-le bas et centré, et ne fais pas progresser simultanément lest, durée et intensité.</div></section>
+<section id="food" class="panel"><h2>Nutrition & compléments</h2><div class="card"><div class="row"><b>Fenêtre alimentaire habituelle</b><span class="pill">16/8 flexible</span></div><h2 class="pink" style="font-size:27px">12h – 20h</h2><p class="muted">Repère habituel, à assouplir après musculation matinale ou course V1 longue si la récupération le demande.</p></div><div class="card"><h2>Repères quotidiens</h2><div class="task"><label>Protéines<small>Environ 180 g / jour</small></label></div><div class="task"><label>Créatine<small>3–5 g chaque jour, avec un repas</small></label></div><div class="task"><label>Whey<small>25–30 g si nécessaire pour atteindre les protéines</small></label></div><div class="task"><label>Électrolytes<small>Sorties longues / chaleur / forte transpiration</small></label></div><div class="task"><label>Glucides<small>À adapter à la charge V1, particulièrement samedi</small></label></div></div><div class="card"><h2>Journal alimentaire & sensations</h2><textarea id="foodNotes" placeholder="Repas, compléments, énergie, sommeil, récupération…"></textarea><button class="btn" style="margin-top:9px" id="saveNotes">Enregistrer mes notes</button></div><div class="note">Les calories et les besoins restent des estimations à ajuster selon la tendance du poids, l'énergie et les performances. La supplémentation ne remplace pas une alimentation suffisante ni un avis médical si une maladie ou un traitement le nécessite.</div></section>
+<section id="shop" class="panel"><div class="row"><h2>Courses de la semaine</h2><span class="pill" id="shopCount">0 / 10</span></div><p class="muted">Liste de départ à adapter aux menus et à ce qu'il reste à la maison.</p><div class="card" id="shoppingList"></div><div class="btnrow"><button class="btn" id="copyList">Copier la liste</button><button class="btn ghost" id="resetList">Réinitialiser</button><button class="btn secondary" id="exportBackup">Exporter sauvegarde JSON</button></div></section>
+<section class="card" id="cloudCard">
+  <div class="row"><h2>Compte & synchronisation</h2><span class="pill" id="cloudStatus">Hors ligne</span></div>
+  <p class="muted" id="cloudMessage">Connecte ton compte pour synchroniser tes données entre appareils.</p>
+  <div id="authForm">
+    <div class="field"><label>Adresse e-mail</label><input id="authEmail" type="text" autocomplete="email" placeholder="ton@email.com"></div>
+    <div class="field"><label>Mot de passe</label><input id="authPassword" type="password" autocomplete="current-password" placeholder="Au moins 8 caractères"></div>
+    <div class="btnrow"><button class="btn" id="signInBtn">Se connecter</button><button class="btn secondary" id="signUpBtn">Créer mon compte</button></div>
+  </div>
+  <div class="btnrow" id="signedInActions" style="display:none"><button class="btn secondary" id="syncNowBtn">Synchroniser maintenant</button><button class="btn ghost" id="signOutBtn">Se déconnecter</button></div>
+</section>
+<section class="card" id="driveCard" style="display:none">
+  <div class="row"><h2>Google Drive</h2><span class="pill" id="driveStatus">Non connecté</span></div>
+  <p class="muted" id="driveMessage">Connecte Google Drive pour sauvegarder tes données dans un fichier visible dans ton Drive.</p>
+  <div class="btnrow" id="driveConnectRow"><button class="btn" id="driveConnectBtn">Connecter Google Drive</button></div>
+  <div class="btnrow" id="driveActionsRow" style="display:none"><button class="btn" id="driveBackupBtn">Sauvegarder sur Drive</button><button class="btn secondary" id="driveRestoreBtn">Restaurer</button><button class="btn ghost" id="driveDisconnectBtn">Déconnecter</button></div>
+</section>
+<div class="foot">VAA PERFORMANCE · V1.1 · Supabase + Google Drive + sauvegarde locale</div></main>
+<div class="navbottom"><button class="btn ghost" id="enableNotifications">Activer les notifications</button></div><div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = "https://afecpapkjkhfatlxnbpr.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_0rNh4iXDT2uoCUzOJ8FSsQ_HaPxKZEt";
+let cloudUser = null;
+let cloudSaveTimer = null;
+let supabaseClient = null;
+const cloudStatus = (label, message) => {
+  const status = document.getElementById('cloudStatus');
+  const msg = document.getElementById('cloudMessage');
+  if (status) status.textContent = label;
+  if (msg) msg.textContent = message;
+};
+function initCloud() {
+  handleDriveReturn();
+  if (!window.supabase || !window.supabase.createClient) {
+    cloudStatus('SDK indisponible', 'Impossible de charger Supabase. Vérifie ta connexion Internet puis actualise la page.');
+    return;
+  }
+  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+  document.getElementById('signInBtn').addEventListener('click', () => authenticate('signin'));
+  document.getElementById('signUpBtn').addEventListener('click', () => authenticate('signup'));
+  document.getElementById('syncNowBtn').addEventListener('click', syncToCloud);
+  document.getElementById('signOutBtn').addEventListener('click', async () => {
+    await supabaseClient.auth.signOut();
+    cloudUser = null;
+    document.getElementById('authForm').style.display = 'block';
+    document.getElementById('signedInActions').style.display = 'none';
+    document.getElementById('driveCard').style.display = 'none';
+    cloudStatus('Déconnecté', 'Les données locales restent sur cet appareil.');
+  });
+  document.getElementById('driveConnectBtn').addEventListener('click', connectDrive);
+  document.getElementById('driveBackupBtn').addEventListener('click', backupDrive);
+  document.getElementById('driveRestoreBtn').addEventListener('click', restoreDrive);
+  document.getElementById('driveDisconnectBtn').addEventListener('click', disconnectDrive);
+  supabaseClient.auth.getSession().then(({data, error}) => {
+    if (error) cloudStatus('Erreur session', error.message);
+    else if (data.session) loadCloudData(data.session.user);
+  });
+  supabaseClient.auth.onAuthStateChange((_event, session) => {
+    if (session && (!cloudUser || cloudUser.id !== session.user.id)) loadCloudData(session.user);
+  });
+}
+async function authenticate(mode) {
+  const email = document.getElementById('authEmail').value.trim();
+  const password = document.getElementById('authPassword').value;
+  if (!email || password.length < 8) {
+    cloudStatus('À compléter', 'Saisis une adresse e-mail valide et un mot de passe de 8 caractères minimum.');
+    return;
+  }
+  if (!supabaseClient) {
+    cloudStatus('SDK indisponible', 'Actualise la page. Si le problème persiste, vérifie la connexion Internet.');
+    return;
+  }
+  cloudStatus('Connexion…', 'Demande envoyée à Supabase.');
+  const {data, error} = mode === 'signup'
+    ? await supabaseClient.auth.signUp({email, password})
+    : await supabaseClient.auth.signInWithPassword({email, password});
+  if (error) {
+    cloudStatus('Erreur Supabase', error.message);
+    return;
+  }
+  if (data.session && data.user) await loadCloudData(data.user);
+  else cloudStatus('Vérifie ton e-mail', 'Compte demandé. Consulte ta boîte mail pour confirmer ton adresse avant de te connecter.');
+}
+async function loadCloudData(user) {
+  cloudUser = user;
+  document.getElementById('authForm').style.display = 'none';
+  document.getElementById('signedInActions').style.display = 'flex';
+  document.getElementById('driveCard').style.display = 'block';
+  cloudStatus('Chargement…', 'Récupération de tes données personnelles.');
+  const {data, error} = await supabaseClient.from('user_app_data').select('data').eq('user_id', user.id).maybeSingle();
+  if (error) { cloudStatus('Erreur cloud', error.message); return; }
+  if (data && data.data) {
+    state = normalizeState({...state, ...data.data});
+    const rolled = rollDay();
+    saveLocalOnly();
+    render();
+    if (rolled) queueCloudSave();
+    cloudStatus('Synchronisé', 'Tes données ont été chargées depuis Supabase.');
+  } else {
+    await syncToCloud();
+  }
+  refreshDriveStatus();
+}
+
+/* ---------- Google Drive (via Edge Function google-oauth) ---------- */
+const DRIVE_ERRORS = {
+  access_denied: "Autorisation refusée sur l'écran Google.",
+  expired: 'La demande a expiré. Relance la connexion.',
+  no_refresh_token: "Google n'a pas fourni d'accès durable. Retire l'accès « Vaa Performance » dans ton compte Google (Sécurité > Applications tierces), puis reconnecte.",
+  token: "Échange du code Google impossible. Vérifie l'URI de redirection et le secret client.",
+  db: "Enregistrement de l'accès impossible côté Supabase."
+};
+async function driveCall(action, extra = {}) {
+  const {data, error} = await supabaseClient.functions.invoke('google-oauth', {body: {action, ...extra}});
+  if (error) {
+    let msg = error.message;
+    try { const b = await error.context.json(); if (b && b.error) msg = b.error; } catch {}
+    throw new Error(msg);
+  }
+  if (data && data.error) throw new Error(data.error);
+  return data;
+}
+function driveBusy(on) {
+  ['driveConnectBtn','driveBackupBtn','driveRestoreBtn','driveDisconnectBtn'].forEach(id => document.getElementById(id).disabled = on);
+}
+function driveUI(label, message, connected, ok) {
+  const pill = document.getElementById('driveStatus');
+  pill.textContent = label;
+  pill.classList.toggle('ok', !!ok);
+  document.getElementById('driveMessage').textContent = message;
+  if (connected !== undefined) {
+    document.getElementById('driveConnectRow').style.display = connected ? 'none' : 'flex';
+    document.getElementById('driveActionsRow').style.display = connected ? 'flex' : 'none';
+  }
+}
+const fmtDate = iso => iso ? new Date(iso).toLocaleString('fr-FR', {dateStyle:'short', timeStyle:'short'}) : '';
+async function refreshDriveStatus() {
+  if (!cloudUser) return;
+  try {
+    const s = await driveCall('status');
+    if (s.connected) {
+      driveUI('Connecté', (s.email ? 'Compte ' + s.email + '. ' : '') + (s.last_backup_at ? 'Dernière sauvegarde : ' + fmtDate(s.last_backup_at) + '.' : 'Aucune sauvegarde pour le moment.'), true, true);
+    } else {
+      driveUI('Non connecté', 'Connecte Google Drive pour sauvegarder tes données dans un fichier visible dans ton Drive.', false);
+    }
+  } catch (e) {
+    driveUI('Indisponible', 'Service Drive injoignable : ' + e.message, false);
+  }
+}
+async function connectDrive() {
+  driveBusy(true);
+  driveUI('Connexion…', 'Ouverture de Google…');
+  try {
+    const {url} = await driveCall('start', {return_to: location.origin + location.pathname});
+    location.href = url;
+  } catch (e) {
+    driveUI('Erreur', e.message, false);
+    driveBusy(false);
+  }
+}
+async function backupDrive() {
+  driveBusy(true);
+  driveUI('Sauvegarde…', 'Synchronisation puis envoi vers Google Drive.');
+  try {
+    clearTimeout(cloudSaveTimer);
+    await syncToCloud();
+    const r = await driveCall('backup');
+    driveUI('Connecté', 'Sauvegardé dans « ' + r.name + ' » le ' + fmtDate(r.last_backup_at) + '.', true, true);
+    toast('Sauvegarde Drive effectuée');
+  } catch (e) {
+    driveUI('Erreur', e.message);
+    if (/connect/i.test(e.message)) refreshDriveStatus();
+  } finally { driveBusy(false); }
+}
+async function restoreDrive() {
+  driveBusy(true);
+  try {
+    const r = await driveCall('restore');
+    const when = r.exported_at ? ' du ' + fmtDate(r.exported_at) : '';
+    if (!confirm('Remplacer les données actuelles par la sauvegarde Google Drive' + when + ' ?')) return;
+    state = normalizeState(r.data);
+    rollDay();
+    save();
+    render();
+    toast('Données restaurées depuis Drive');
+    refreshDriveStatus();
+  } catch (e) {
+    driveUI('Erreur', e.message);
+  } finally { driveBusy(false); }
+}
+async function disconnectDrive() {
+  if (!confirm("Déconnecter Google Drive ? Le fichier de sauvegarde reste dans ton Drive.")) return;
+  driveBusy(true);
+  try {
+    await driveCall('disconnect');
+    driveUI('Non connecté', 'Google Drive déconnecté. Le fichier de sauvegarde est toujours dans ton Drive.', false);
+  } catch (e) {
+    driveUI('Erreur', e.message);
+  } finally { driveBusy(false); }
+}
+function handleDriveReturn() {
+  const p = new URLSearchParams(location.search);
+  const st = p.get('drive');
+  if (!st) return;
+  if (st === 'connected') toast('Google Drive connecté');
+  else {
+    const code = p.get('drive_msg') || '';
+    const msg = DRIVE_ERRORS[code] || ('Connexion Google impossible (' + (code || 'erreur') + ').');
+    setTimeout(() => driveUI('Erreur', msg, false), 0);
+    toast('Connexion Google Drive échouée');
+  }
+  p.delete('drive'); p.delete('drive_msg');
+  const q = p.toString();
+  history.replaceState(null, '', location.pathname + (q ? '?' + q : '') + location.hash);
+}
+async function syncToCloud() {
+  if (!cloudUser || !supabaseClient) return;
+  cloudStatus('Synchronisation…', 'Enregistrement de tes données.');
+  const {error} = await supabaseClient.from('user_app_data').upsert({
+    user_id: cloudUser.id, data: state, updated_at: new Date().toISOString()
+  }, {onConflict:'user_id'});
+  if (error) cloudStatus('Erreur cloud', error.message);
+  else cloudStatus('Synchronisé', 'Tes données sont enregistrées dans ton espace Supabase.');
+}
+function queueCloudSave() {
+  if (!cloudUser) return;
+  clearTimeout(cloudSaveTimer);
+  cloudSaveTimer = setTimeout(syncToCloud, 800);
+}
+</script>
+
+<script>
+// [heure, libellé, jours affichés, jours JS (0 = dimanche … 6 = samedi)]
+const ALL=[0,1,2,3,4,5,6];
+const tasks=[['05:00','Musculation maison','Mardi / Jeudi',[2,4]],['05:45','Calisthenics 15 min','Mardi / Jeudi',[2,4]],['12:00','Repas + créatine','Tous les jours',ALL],['15:30','Collation avant V1','Lundi / Mercredi',[1,3]],['16:00','V1 lestée · Rapa 26','Lundi / Mercredi',[1,3]],['07:00','Course V1 · Rapa 24','Samedi',[6]],['19:00','Dîner et récupération','Tous les jours',ALL]];
+const dayKey=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const todayTasks=()=>{const d=new Date().getDay();return tasks.map((t,i)=>({t,i})).filter(x=>x.t[3].includes(d)).sort((a,b)=>a.t[0].localeCompare(b.t[0]))};
+function normalizeState(s){s=s&&typeof s==='object'?s:{};s.done=Array.isArray(s.done)?s.done:[];s.shop=Array.isArray(s.shop)?s.shop:[];s.water=+s.water||0;s.weights=Array.isArray(s.weights)?s.weights:[];s.notes=typeof s.notes==='string'?s.notes:'';return s}
+// Tâches cochées et hydratation repartent de zéro chaque jour (liste de courses, poids et notes sont conservés).
+function rollDay(){if(state.day!==dayKey()){state.done=[];state.water=0;state.day=dayKey();return true}return false}
+const days=[['Lundi','V1 lestée · 16h','Rapa 26 · +10 kg · force/endurance · max 1h30'],['Mardi','Musculation · 05h','Force maison + 15 min calisthenics'],['Mercredi','V1 lestée · 16h','Rapa 26 · résistance sous fatigue · max 1h30'],['Jeudi','Musculation · 05h','Force maison + 15 min calisthenics'],['Vendredi','Cardio léger','30–40 min + mobilité'],['Samedi','Course V1 · 07h','Rapa 24 · 20–25 km · endurance'],['Dimanche','Récupération','Repos + mobilité douce']];
+const groceries=[['Poulet / dinde','1,5 kg'],['Œufs','18 unités'],['Poisson','1 kg'],['Viande maigre','1 kg'],['Riz','1 kg'],['Patates douces','1,5 kg'],['Bananes','7 à 10'],['Légumes variés','2 kg'],['Fruits','1,5 kg'],['Whey / créatine','Vérifier le stock']];
+const load=()=>{try{return JSON.parse(localStorage.getItem('vaa-v1')||'{}')}catch{return {}}};let state=normalizeState(load());rollDay();
+const saveLocalOnly=()=>localStorage.setItem('vaa-v1',JSON.stringify(state));const save=()=>{saveLocalOnly();queueCloudSave()};const toast=t=>{let e=document.getElementById('toast');e.textContent=t;e.style.display='block';setTimeout(()=>e.style.display='none',2200)};
+function renderTasks(){const list=todayTasks();let el=document.getElementById('tasks');const lbl=new Date().toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});document.getElementById('todayLabel').textContent=lbl.charAt(0).toUpperCase()+lbl.slice(1)+' · '+days[(new Date().getDay()+6)%7][1];el.innerHTML=list.map(({t,i})=>`<div class="task ${state.done.includes(i)?'done':''}"><input type="checkbox" id="task${i}" data-task="${i}" ${state.done.includes(i)?'checked':''}><label for="task${i}">${t[1]}<small>${t[0]} · ${t[2]}</small></label></div>`).join('');el.querySelectorAll('[data-task]').forEach(x=>x.onchange=()=>{let i=+x.dataset.task;state.done=x.checked?[...state.done.filter(n=>n!==i),i]:state.done.filter(n=>n!==i);save();renderTasks()});const n=list.filter(x=>state.done.includes(x.i)).length;let p=list.length?Math.round(n/list.length*100):0;document.getElementById('progressLabel').textContent=p+' % réalisé';document.getElementById('progressBar').style.width=p+'%'}
+function renderPlan(){const t=(new Date().getDay()+6)%7;document.getElementById('weekPlan').innerHTML=days.map((d,i)=>`<div class="card day ${i===t?'today':''}">${i===t?'<span class="pill">Aujourd\'hui</span>':''}<b>${d[0]}</b><span>${d[1]}</span><small>${d[2]}</small></div>`).join('')}
+function renderShop(){document.getElementById('shoppingList').innerHTML=groceries.map((g,i)=>`<div class="shop ${state.shop.includes(i)?'checked':''}"><input type="checkbox" data-shop="${i}" ${state.shop.includes(i)?'checked':''}><span>${g[0]}</span><small>${g[1]}</small></div>`).join('');document.getElementById('shopCount').textContent=state.shop.length+' / '+groceries.length;document.querySelectorAll('[data-shop]').forEach(x=>x.onchange=()=>{let i=+x.dataset.shop;state.shop=x.checked?[...state.shop,i]:state.shop.filter(n=>n!==i);save();renderShop()})}
+function render(){renderTasks();renderPlan();renderShop();document.getElementById('waterLabel').textContent=state.water+' / 8 verres';document.getElementById('weightHistory').textContent=state.weights.length?'Dernière pesée : '+state.weights.at(-1)+' kg · '+state.weights.length+' mesure(s)':'Aucune pesée enregistrée.';document.getElementById('foodNotes').value=state.notes;let w=state.weights.at(-1)||120;document.getElementById('headWeight').textContent=w+' kg';document.getElementById('weightInput').value=w}
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button,.panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active')});
+document.getElementById('waterPlus').onclick=()=>{state.water=Math.min(20,state.water+1);save();render()};document.getElementById('waterMinus').onclick=()=>{state.water=Math.max(0,state.water-1);save();render()};document.getElementById('saveWeight').onclick=()=>{let v=Number(document.getElementById('weightInput').value);if(v>0&&v<400){state.weights.push(v);save();render();toast('Pesée enregistrée')}};document.getElementById('saveNotes').onclick=()=>{state.notes=document.getElementById('foodNotes').value;save();toast('Notes enregistrées')};document.getElementById('resetList').onclick=()=>{state.shop=[];save();renderShop()};document.getElementById('exportBackup').onclick=()=>{const blob=new Blob([JSON.stringify({app:'Vaa Performance',version:1,exported_at:new Date().toISOString(),data:state},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vaa-performance-backup.json';a.click();URL.revokeObjectURL(a.href);toast('Sauvegarde JSON téléchargée')};
+document.getElementById('copyList').onclick=async()=>{let txt=groceries.map((g,i)=>(state.shop.includes(i)?'[x] ':'[ ] ')+g[0]+' — '+g[1]).join('\n');try{await navigator.clipboard.writeText(txt);toast('Liste copiée')}catch{toast('Copie non disponible dans ce navigateur')}};
+document.getElementById('enableNotifications').onclick=async()=>{if(!('Notification'in window)){toast('Notifications non prises en charge ici');return}let p=await Notification.requestPermission();if(p==='granted'){new Notification('Vaa Performance',{body:'Notifications autorisées sur cet appareil.'});toast('Autorisation accordée')}else toast('Autorisation non accordée')};
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&rollDay()){save();render()}});
+if('serviceWorker'in navigator && location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});saveLocalOnly();render();
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initCloud); else initCloud();
+</script></body></html>
