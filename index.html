@@ -103,6 +103,17 @@ ul.list{margin:4px 0 0;padding-left:18px}ul.list li{margin:4px 0}
 .rangeval{font-weight:700;color:var(--pinkt);min-width:44px;text-align:right}
 /* exercises */
 .ex{border-top:1px solid var(--line);padding:12px 0}.ex:first-of-type{border-top:0}
+.exrow{display:flex;gap:11px;align-items:flex-start}.exrow .exb{flex:1;min-width:0}
+svg.fig{width:112px;height:75px;flex:none;background:#130f17;border:1px solid var(--line);border-radius:12px}
+@media(max-width:380px){svg.fig{width:92px;height:62px}}
+.alt{font-size:12px;color:var(--amber);margin-top:4px}
+.cgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:8px}
+.cc{border:1px solid var(--line);background:var(--card2);border-radius:9px;padding:6px 0 5px;text-align:center;font-size:12.5px;font-weight:700;color:var(--ink)}
+.cc small{display:block;font-size:9px;font-weight:600;color:var(--muted)}
+.cc.rest{background:transparent;color:var(--dim)}.cc.test{color:var(--amber)}
+.cc.done{background:var(--greenbg);border-color:#1f5a38;color:var(--green)}
+.cc.today{border-color:var(--pinkt)}.cc.sel{outline:2px solid var(--pink);outline-offset:1px}
+.seg button{font-size:12.5px}
 .ex .presc{font-size:12.5px;color:var(--pinkt);font-weight:700;margin:2px 0}
 .ex .cue{font-size:12.5px;color:var(--muted)}
 .sets{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:6px;margin-top:8px}
@@ -194,7 +205,7 @@ summary{cursor:pointer;font-weight:700;font-size:13.5px;color:var(--pinkt)}
       <button class="btn ghost" id="enableNotifications">Activer les notifications</button>
     </div>
   </section>
-  <div class="foot">VAA PERFORMANCE · V2 · Supabase + Google Drive + sauvegarde locale</div>
+  <div class="foot">VAA PERFORMANCE · V2.1 · Supabase + Google Drive + sauvegarde locale</div>
 </main>
 
 <nav class="navbottom" aria-label="Navigation principale"><div class="in">
@@ -264,7 +275,7 @@ const PLAN = {
   2:{name:'Mardi', type:'train', kind:'muscu', s:'A', title:'Musculation A + calisthénie', sub:'Tirage & chaîne postérieure · 5 h · ≈ 60 min', tl:[
     {id:'ma1',t:'04:45',kind:'care',title:'Lever · 500 ml d’eau',detail:'Une banane avant la séance si l’énergie manque.'},
     {id:'ma2',t:'05:00',kind:'session',title:'Musculation A — tirage & chaîne postérieure',detail:'Échauffement 8 min · 7 exercices',open:'muscu:A'},
-    {id:'ma3',t:'05:45',kind:'session',title:'Calisthénie 15 min',detail:'Circuit sans impact · 3 tours',open:'muscu:A'},
+    {id:'ma3',t:'05:45',kind:'session',caliSlot:true,title:'Calisthénie 15 min',detail:'Circuit sans impact · 3 tours',open:'muscu:A'},
     {...M.mPost,id:'ma4'},{...M.mR1,id:'ma5'},{...crea('12:00'),id:'ma6'},{...M.mSnk,id:'ma7'},{...M.mDin,id:'ma8'},
     {id:'ma9',t:'21:30',kind:'sleep',title:'Coucher',detail:'Récupération = progression.'}]},
   3:{name:'Mercredi', type:'train', kind:'vaa', s:'mer', title:'Va’a V1 lestée +10 kg', sub:'Rapa 26 · résistance sous fatigue · 1 h 30 max', tl:[
@@ -276,7 +287,7 @@ const PLAN = {
   4:{name:'Jeudi', type:'train', kind:'muscu', s:'B', title:'Musculation B + calisthénie', sub:'Poussée, jambes & rotation · 5 h · ≈ 60 min', tl:[
     {id:'je1',t:'04:45',kind:'care',title:'Lever · 500 ml d’eau',detail:'Une banane avant la séance si besoin.'},
     {id:'je2',t:'05:00',kind:'session',title:'Musculation B — poussée, jambes & rotation',detail:'Échauffement 8 min · 7 exercices',open:'muscu:B'},
-    {id:'je3',t:'05:45',kind:'session',title:'Calisthénie 15 min',detail:'Circuit sans impact · 3 tours',open:'muscu:B'},
+    {id:'je3',t:'05:45',kind:'session',caliSlot:true,title:'Calisthénie 15 min',detail:'Circuit sans impact · 3 tours',open:'muscu:B'},
     {...M.mPost,id:'je4'},{...M.mR1,id:'je5'},{...crea('12:00'),id:'je6'},{...M.mSnk,id:'je7'},{...M.mDin,id:'je8'},
     {id:'je9',t:'21:30',kind:'sleep',title:'Coucher',detail:'Récupération = progression.'}]},
   5:{name:'Vendredi', type:'train', kind:'cardio', s:'ven', title:'Cardio doux + mobilité', sub:'30–40 min sans impact · 15 min de mobilité', tl:[
@@ -312,25 +323,100 @@ const WARMUP = [
 ];
 const MUSCU = {
   A:{name:'Séance A — Tirage & chaîne postérieure', day:'Mardi', ex:[
-    {id:'a1',n:'Rowing haltère un bras (appui banc)',load:'17 kg',reps:'8–12 / bras',rest:'90 s',cue:'Dos plat, tire le coude vers la hanche : c’est la phase de traction de la pagaie.'},
-    {id:'a2',n:'Développé couché haltères',load:'2 × 17 kg',reps:'8–12',rest:'90 s',cue:'Omoplates serrées, descente contrôlée en 2–3 s.'},
-    {id:'a3',n:'Soulevé de terre jambes tendues (RDL)',load:'2 × 17 kg',reps:'10–12',rest:'90 s',cue:'Genoux légèrement fléchis, hanches vers l’arrière. Ménage genou et pied.'},
-    {id:'a4',n:'Pull-over haltère sur banc',load:'17 kg',reps:'10–12',rest:'75 s',cue:'Bras presque tendus, amplitude sans douleur d’épaule. Le grand dorsal est le moteur du coup de pagaie.'},
-    {id:'a5',n:'Tirage élastique « coup de pagaie »',load:'élastique 30 kg',reps:'12 / côté',rest:'60 s',cue:'Assis ou à genoux : rotation du buste puis tirage, comme dans le va’a.'},
-    {id:'a6',n:'Face pull élastique',load:'élastique',reps:'15',rest:'45 s',cue:'Coudes hauts, tire vers le front. Protège les épaules.'},
-    {id:'a7',n:'Roue abdominale (à genoux)',load:'poids du corps',reps:'8–10',rest:'60 s',fixed:3,cue:'Bassin rentré, ne creuse pas le bas du dos.'}
+    {id:'a1',fig:'row1',n:'Rowing haltère un bras (appui banc)',load:'17 kg',reps:'8–12 / bras',rest:'90 s',cue:'Dos plat, tire le coude vers la hanche : c’est la phase de traction de la pagaie.'},
+    {id:'a2',fig:'bench',n:'Développé couché haltères',load:'2 × 17 kg',reps:'8–12',rest:'90 s',cue:'Omoplates serrées, descente contrôlée en 2–3 s.'},
+    {id:'a3',fig:'rdl',n:'Soulevé de terre jambes tendues (RDL)',load:'2 × 17 kg',reps:'10–12',rest:'90 s',cue:'Genoux légèrement fléchis, hanches vers l’arrière. Ménage genou et pied.'},
+    {id:'a4',fig:'pullover',n:'Pull-over haltère sur banc',load:'17 kg',reps:'10–12',rest:'75 s',cue:'Bras presque tendus, amplitude sans douleur d’épaule. Le grand dorsal est le moteur du coup de pagaie.'},
+    {id:'a5',fig:'paddle',n:'Tirage élastique « coup de pagaie »',load:'élastique 30 kg',reps:'12 / côté',rest:'60 s',cue:'Assis ou à genoux : rotation du buste puis tirage, comme dans le va’a.'},
+    {id:'a6',fig:'facepull',n:'Face pull élastique',load:'élastique',reps:'15',rest:'45 s',cue:'Coudes hauts, tire vers le front. Protège les épaules.'},
+    {id:'a7',fig:'wheel',n:'Roue abdominale (à genoux)',load:'poids du corps',reps:'8–10',rest:'60 s',fixed:3,cue:'Bassin rentré, ne creuse pas le bas du dos.'}
   ]},
   B:{name:'Séance B — Poussée, jambes & rotation', day:'Jeudi', ex:[
-    {id:'b1',n:'Goblet squat sur banc (box squat)',load:'17 kg',reps:'10–12',rest:'90 s',cue:'Assieds-toi sur le banc réglé à une hauteur sans douleur de genou, puis remonte.'},
-    {id:'b2',n:'Hip thrust sur banc',load:'17 kg (ou 2 × 17)',reps:'12–15',rest:'90 s',cue:'Pause 1 s en haut, fessiers serrés.'},
-    {id:'b3',n:'Développé incliné haltères',load:'2 × 17 kg',reps:'8–12',rest:'90 s',cue:'Banc à 30°, coudes à 45° du buste.'},
-    {id:'b4',n:'Rowing penché deux haltères',load:'2 × 17 kg',reps:'10–12',rest:'90 s',cue:'Buste à 45°, dos neutre, serre les omoplates en haut.'},
-    {id:'b5',n:'Élévations latérales',load:'2 × 8 kg',reps:'12–15',rest:'60 s',cue:'Monte jusqu’à l’horizontale, sans élan.'},
-    {id:'b6',n:'Rotation russe kettlebell (assis)',load:'8 kg',reps:'16–20 au total',rest:'45 s',fixed:3,cue:'La rotation vient du buste, pas seulement des bras.'},
-    {id:'b7',n:'Gainage latéral',load:'poids du corps',reps:'30–45 s / côté',rest:'45 s',fixed:3,cue:'Corps aligné, hanches hautes.'}
+    {id:'b1',fig:'goblet',n:'Goblet squat sur banc (box squat)',load:'17 kg',reps:'10–12',rest:'90 s',cue:'Assieds-toi sur le banc réglé à une hauteur sans douleur de genou, puis remonte.'},
+    {id:'b2',fig:'hipthrust',n:'Hip thrust sur banc',load:'17 kg (ou 2 × 17)',reps:'12–15',rest:'90 s',cue:'Pause 1 s en haut, fessiers serrés.'},
+    {id:'b3',fig:'incline',n:'Développé incliné haltères',load:'2 × 17 kg',reps:'8–12',rest:'90 s',cue:'Banc à 30°, coudes à 45° du buste.'},
+    {id:'b4',fig:'row2',n:'Rowing penché deux haltères',load:'2 × 17 kg',reps:'10–12',rest:'90 s',cue:'Buste à 45°, dos neutre, serre les omoplates en haut.'},
+    {id:'b5',fig:'lateral',n:'Élévations latérales',load:'2 × 8 kg',reps:'12–15',rest:'60 s',cue:'Monte jusqu’à l’horizontale, sans élan.'},
+    {id:'b6',fig:'twist',n:'Rotation russe kettlebell (assis)',load:'8 kg',reps:'16–20 au total',rest:'45 s',fixed:3,cue:'La rotation vient du buste, pas seulement des bras.'},
+    {id:'b7',fig:'sideplank',n:'Gainage latéral',load:'poids du corps',reps:'30–45 s / côté',rest:'45 s',fixed:3,cue:'Corps aligné, hanches hautes.'}
   ]}
 };
-const CALI = ['Pompes (sur les genoux si besoin)','Dead bug','Superman (extension dorsale au sol)','Bird dog','Gainage ventral'];
+const CALI = [
+  {n:'Pompes (sur les genoux si besoin)',fig:'pushup'},{n:'Dead bug',fig:'deadbug'},{n:'Superman (extension dorsale au sol)',fig:'superman'},
+  {n:'Bird dog',fig:'birddog'},{n:'Gainage ventral',fig:'fplank'}];
+
+/* ---------- Programme calisthénie 28 jours ---------- */
+const CEX = {
+  pu: {n:'Pompes', fig:'pushup', cue:'Corps gainé de la tête aux talons, poitrine jusqu’au sol, coudes à 45°.', alt:'Trop dur : sur les genoux, ou mains sur le banc.'},
+  pui:{n:'Pompes inclinées', fig:'pushupInc', cue:'Mains sur le banc : plus facile, idéal pour soigner la technique.'},
+  pud:{n:'Pompes déclinées', fig:'pushupDec', cue:'Pieds sur le banc : plus dur, insiste sur le haut des pectoraux et les épaules.', alt:'Épaules sensibles : pieds sur une marche basse.'},
+  sq: {n:'Squats', fig:'squat', cue:'Pieds largeur d’épaules, poids sur les talons, dos droit.', alt:'Genou : amplitude sans douleur, ou assieds-toi sur le banc à chaque répétition.'},
+  lu: {n:'Fentes', fig:'lunge', cue:'Buste droit, genou avant au-dessus de la cheville.', alt:'Genou : fente arrière courte en te tenant au banc, ou fente statique sans pas.'},
+  pl: {n:'Gainage avant-bras', fig:'fplank', cue:'Coudes sous les épaules, fessiers serrés, respiration calme.'},
+  hp: {n:'Planche bras tendus', fig:'plank', cue:'Position haute de pompe, immobile, bassin aligné.'},
+  mc: {n:'Mountain climbers', fig:'climber', cue:'Genou vers la poitrine en alternance, bassin stable.', alt:'Pied (fasciite) : version lente sans sauter, ou mains sur le banc.'}
+};
+const C28 = [
+  [['pu','3 × 8'],['sq','3 × 10'],['pl','20 s']], [['pui','3 × 10'],['lu','2 × 10 / jambe'],['hp','25 s']], [['pu','3 × 10'],['sq','3 × 12'],['mc','20 s']], null,
+  [['pu','3 × 10'],['lu','3 × 8 / jambe'],['pl','30 s']], [['pui','3 × 12'],['sq','3 × 12'],['mc','25 s']], 'test',
+  null, [['pud','3 × 8'],['lu','3 × 10 / jambe'],['mc','30 s']], [['pu','4 × 12'],['sq','3 × 15'],['pl','35 s']], [['pu','4 × 12'],['lu','3 × 12 / jambe'],['pl','40 s']],
+  null, [['pui','3 × 15'],['sq','3 × 15'],['mc','35 s']], [['pu','4 × 12'],['sq','4 × 15'],['pl','40 s']],
+  'test', null, [['pud','3 × 10'],['lu','3 × 12 / jambe'],['mc','40 s']], [['pu','4 × 15'],['sq','4 × 15'],['pl','45 s']],
+  [['pu','4 × 15'],['lu','3 × 15 / jambe'],['pl','45 s']], null, [['pui','3 × 15'],['sq','4 × 15'],['mc','45 s']],
+  [['pu','5 × 12'],['sq','4 × 18'],['pl','50 s']], [['pud','4 × 10'],['lu','3 × 15 / jambe'],['mc','50 s']], null,
+  [['pu','5 × 15'],['sq','4 × 18'],['pl','55 s']], [['pu','5 × 15'],['lu','3 × 15 / jambe'],['pl','60 s']], [['pui','3 × 20'],['sq','4 × 20'],['mc','60 s']], 'test'
+];
+const CALI_TIME = {1:'07:00',2:'05:45',3:'07:00',4:'05:45',5:'07:00',6:'16:30',7:'10:00'};
+
+/* ---------- Illustrations des exercices (pictogrammes dessinés) ---------- */
+const FIGS = {
+  pushup:{main:{h:[100,42],s:[90,48],p:[56,58],arms:[[[90,59],[90,71]]],legs:[[[38,64],[18,71]]]},ghost:{h:[101,57],s:[90,62],p:[56,65],arms:[[[80,63],[90,71]]],legs:[[[38,68],[18,71]]]}},
+  plank:{main:{h:[100,42],s:[90,48],p:[56,58],arms:[[[90,59],[90,71]]],legs:[[[38,64],[18,71]]]}},
+  pushupInc:{eq:[{t:'bench',x:78,y:50,w:36}],main:{h:[96,28],s:[88,34],p:[56,52],arms:[[[90,42],[92,50]]],legs:[[[38,62],[20,71]]]},ghost:{h:[101,40],s:[92,45],p:[58,58],arms:[[[82,44],[92,50]]],legs:[[[39,65],[20,71]]]}},
+  pushupDec:{eq:[{t:'bench',x:6,y:50,w:30}],main:{h:[100,54],s:[90,58],p:[56,53],arms:[[[90,64],[90,71]]],legs:[[[36,51],[20,48]]]},ghost:{h:[100,63],s:[90,66],p:[56,58],arms:[[[80,66],[90,71]]],legs:[[[36,53],[20,48]]]}},
+  squat:{main:{h:[66,22],s:[62,30],p:[50,52],arms:[[[74,34],[88,34]]],legs:[[[72,56],[64,72]]]},ghost:{h:[60,10],s:[60,18],p:[60,44],arms:[[[64,30],[68,40]]],legs:[[[60,58],[60,72]]]}},
+  lunge:{main:{h:[60,20],s:[60,28],p:[60,50],arms:[[[60,40],[62,50]]],legs:[[[78,56],[80,72]],[[46,66],[32,72]]]},ghost:{h:[60,10],s:[60,18],p:[60,44],arms:[[[60,31],[60,44]]],legs:[[[62,58],[62,72]],[[58,58],[58,72]]]}},
+  fplank:{main:{h:[100,48],s:[90,54],p:[56,60],arms:[[[90,71],[104,71]]],legs:[[[38,65],[18,71]]]}},
+  climber:{main:{h:[100,42],s:[90,48],p:[56,56],arms:[[[90,59],[90,71]]],legs:[[[34,62],[14,71]],[[76,62],[66,70]]]},ghost:{h:[100,42],s:[90,48],p:[56,58],arms:[[[90,59],[90,71]]],legs:[[[38,64],[18,71]]]}},
+  deadbug:{main:{h:[98,62],s:[86,64],p:[52,64],arms:[[[86,50],[86,36]],[[99,62],[112,60]]],legs:[[[52,44],[34,44]],[[36,62],[18,60]]]}},
+  superman:{main:{h:[94,56],s:[84,62],p:[54,66],arms:[[[97,58],[110,52]]],legs:[[[38,64],[20,58]]]},ghost:{h:[95,64],s:[84,67],p:[54,68],arms:[[[97,68],[110,68]]],legs:[[[38,69],[20,69]]]}},
+  birddog:{main:{h:[94,40],s:[84,48],p:[48,48],arms:[[[84,60],[84,71]],[[98,44],[112,40]]],legs:[[[48,71],[30,71]],[[32,46],[14,42]]]}},
+  sideplank:{main:{h:[97,40],s:[88,48],p:[55,58],arms:[[[88,70],[100,71]],[[78,42],[66,50]]],legs:[[[36,64],[16,71]]]}},
+  row1:{eq:[{t:'bench',x:60,y:50,w:52}],eqTop:[{t:'db',x:80,y:47}],main:{h:[100,38],s:[88,42],p:[54,44],arms:[[[96,46],[100,50]],[[74,34],[80,46]]],legs:[[[48,58],[44,72]]]},ghost:{h:[100,38],s:[88,42],p:[54,44],arms:[[[86,56],[86,66]]],legs:[[[48,58],[44,72]]]}},
+  bench:{eq:[{t:'bench',x:18,y:52,w:78}],eqTop:[{t:'db',x:80,y:18}],main:{h:[92,46],s:[80,48],p:[42,48],arms:[[[80,34],[80,20]]],legs:[[[24,46],[20,72]]]},ghost:{h:[92,46],s:[80,48],p:[42,48],arms:[[[70,54],[80,40]]],legs:[[[24,46],[20,72]]]}},
+  rdl:{eqTop:[{t:'db',x:80,y:64}],main:{h:[90,32],s:[80,38],p:[52,44],arms:[[[80,50],[80,62]]],legs:[[[56,58],[54,72]]]},ghost:{h:[56,10],s:[56,18],p:[54,44],arms:[[[56,30],[56,42]]],legs:[[[56,58],[54,72]]]}},
+  pullover:{eq:[{t:'bench',x:18,y:52,w:78}],eqTop:[{t:'db',x:110,y:58}],main:{h:[92,46],s:[80,48],p:[42,48],arms:[[[96,52],[110,58]]],legs:[[[24,46],[20,72]]]},ghost:{h:[92,46],s:[80,48],p:[42,48],arms:[[[82,34],[82,20]]],legs:[[[24,46],[20,72]]]}},
+  paddle:{eq:[{t:'band',ax:112,ay:20,x:54,y:46}],main:{h:[62,18],s:[60,26],p:[56,48],arms:[[[52,34],[54,46]]],legs:[[[56,71],[36,71]]]},ghost:{h:[64,18],s:[62,26],p:[56,48],arms:[[[76,24],[92,22]]],legs:[[[56,71],[36,71]]]}},
+  facepull:{eq:[{t:'band',ax:112,ay:22,x:68,y:14}],main:{h:[60,14],s:[60,22],p:[60,46],arms:[[[72,18],[68,14]]],legs:[[[60,59],[60,72]]]},ghost:{h:[60,14],s:[60,22],p:[60,46],arms:[[[78,24],[94,24]]],legs:[[[60,59],[60,72]]]}},
+  wheel:{eqTop:[{t:'wheel',x:104,y:66}],main:{h:[96,54],s:[86,58],p:[56,60],arms:[[[96,63],[104,66]]],legs:[[[42,71],[24,71]]]},ghost:{h:[70,30],s:[64,38],p:[46,52],arms:[[[66,52],[72,66]]],legs:[[[42,71],[24,71]]]}},
+  goblet:{eq:[{t:'bench',x:28,y:52,w:26}],eqTop:[{t:'kb',x:70,y:30}],main:{h:[66,20],s:[62,28],p:[50,50],arms:[[[72,38],[70,32]]],legs:[[[72,56],[66,72]]]},ghost:{h:[60,8],s:[60,16],p:[60,42],arms:[[[66,26],[66,22]]],legs:[[[60,57],[60,72]]]}},
+  hipthrust:{eq:[{t:'bench',x:6,y:46,w:30}],eqTop:[{t:'db',x:62,y:43}],main:{h:[22,40],s:[30,46],p:[62,46],arms:[[[46,52],[60,46]]],legs:[[[82,46],[84,72]]]},ghost:{h:[22,40],s:[30,46],p:[58,62],arms:[[[44,56],[56,62]]],legs:[[[80,52],[84,72]]]}},
+  incline:{eq:[{t:'incline',x1:24,y1:62,x2:70,y2:30}],eqTop:[{t:'db',x:80,y:8}],main:{h:[74,26],s:[66,34],p:[34,56],arms:[[[74,20],[80,10]]],legs:[[[22,58],[20,72]]]},ghost:{h:[74,26],s:[66,34],p:[34,56],arms:[[[58,42],[70,28]]],legs:[[[22,58],[20,72]]]}},
+  row2:{eqTop:[{t:'db',x:78,y:49}],main:{h:[90,32],s:[80,38],p:[52,44],arms:[[[70,34],[78,46]]],legs:[[[56,58],[54,72]]]},ghost:{h:[90,32],s:[80,38],p:[52,44],arms:[[[80,50],[80,62]]],legs:[[[56,58],[54,72]]]}},
+  lateral:{eqTop:[{t:'db',x:27,y:25},{t:'db',x:93,y:25}],main:{h:[60,12],s:[60,22],p:[60,46],arms:[[[45,23],[30,24]],[[75,23],[90,24]]],legs:[[[54,59],[52,72]],[[66,59],[68,72]]]},ghost:{h:[60,12],s:[60,22],p:[60,46],arms:[[[54,34],[52,46]],[[66,34],[68,46]]],legs:[[[54,59],[52,72]],[[66,59],[68,72]]]}},
+  twist:{eqTop:[{t:'kb',x:90,y:54}],main:{h:[78,30],s:[70,38],p:[54,62],arms:[[[80,50],[88,56]]],legs:[[[38,48],[22,56]]]},ghost:{h:[78,30],s:[70,38],p:[54,62],arms:[[[64,52],[56,58]]],legs:[[[38,48],[22,56]]]}}
+};
+const FIG_MAIN = '#ff4fb2', FIG_GHOST = '#5e2449', EQC = '#8fa3bf';
+function poseSvg(P, col, w){
+  const L = (a,b) => `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}"/>`;
+  let s = L(P.s, P.p) + L(P.s, P.h);
+  (P.arms||[]).forEach(([e,h]) => { s += L(P.s,e) + L(e,h); });
+  (P.legs||[]).forEach(([k,f]) => { s += L(P.p,k) + L(k,f); });
+  return `<g stroke="${col}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" fill="none">${s}</g><circle cx="${P.h[0]}" cy="${P.h[1]}" r="6" fill="${col}"/>`;
+}
+function eqSvg(e){
+  if (e.t === 'db') return `<g fill="${EQC}"><rect x="${e.x-7}" y="${e.y-1.5}" width="14" height="3" rx="1"/><rect x="${e.x-9}" y="${e.y-4.5}" width="4" height="9" rx="1"/><rect x="${e.x+5}" y="${e.y-4.5}" width="4" height="9" rx="1"/></g>`;
+  if (e.t === 'kb') return `<path d="M${e.x-4} ${e.y-2} q4 -8 8 0" fill="none" stroke="${EQC}" stroke-width="2.5"/><circle cx="${e.x}" cy="${e.y+3}" r="5.5" fill="${EQC}"/>`;
+  if (e.t === 'bench') return `<g fill="#4a5568"><rect x="${e.x}" y="${e.y}" width="${e.w}" height="4" rx="2"/><rect x="${e.x+4}" y="${e.y+4}" width="3" height="${72-e.y-4}"/><rect x="${e.x+e.w-7}" y="${e.y+4}" width="3" height="${72-e.y-4}"/></g>`;
+  if (e.t === 'incline') return `<g stroke="#4a5568" stroke-linecap="round"><line x1="${e.x1}" y1="${e.y1}" x2="${e.x2}" y2="${e.y2}" stroke-width="5"/><line x1="${(e.x1+e.x2)/2}" y1="${(e.y1+e.y2)/2}" x2="${(e.x1+e.x2)/2}" y2="72" stroke-width="3"/></g>`;
+  if (e.t === 'band') return `<rect x="${e.ax-3}" y="${e.ay-3}" width="6" height="6" fill="#4a5568"/><line x1="${e.ax}" y1="${e.ay}" x2="${e.x}" y2="${e.y}" stroke="#ffb547" stroke-width="2" stroke-dasharray="3 2"/>`;
+  if (e.t === 'wheel') return `<circle cx="${e.x}" cy="${e.y}" r="6" fill="none" stroke="${EQC}" stroke-width="3"/>`;
+  return '';
+}
+function fig(key, label){
+  const F = FIGS[key]; if (!F) return '';
+  return `<svg class="fig" viewBox="0 0 120 80" role="img" aria-label="${esc(label||'')}"><line x1="4" y1="73" x2="116" y2="73" stroke="#2f2737" stroke-width="2"/>${(F.eq||[]).map(eqSvg).join('')}${F.ghost ? poseSvg(F.ghost, FIG_GHOST, 4) : ''}${poseSvg(F.main, FIG_MAIN, 4.5)}${(F.eqTop||[]).map(eqSvg).join('')}</svg>`;
+}
 const COOLDOWN = ['Balle sous le pied : 1 min par pied','Étirement des mollets contre un mur : 2 × 30 s','Étirement pectoraux et grand dorsal : 30 s','Respiration lente 1 min'];
 const SETS_BY_PHASE = {1:3,2:4,3:4,4:2};
 
@@ -394,7 +480,7 @@ const fmtKg = n => (Math.round(n*10)/10).toLocaleString('fr-FR',{minimumFraction
 const toast = t => { const e=$('toast'); e.textContent=t; e.style.display='block'; clearTimeout(toast._t); toast._t=setTimeout(()=>e.style.display='none',2300); };
 
 const STORE = 'vaa-v1';
-function defaultSettings(){ return {start: mondayOf(todayKey()), startKg:120, targetKg:100, protein:180}; }
+function defaultSettings(){ return {start: mondayOf(todayKey()), caliStart: todayKey(), startKg:120, targetKg:100, protein:180}; }
 function normalizeState(s){
   s = s && typeof s === 'object' ? s : {};
   const o = {v:2};
@@ -406,6 +492,7 @@ function normalizeState(s){
   o.vaa = Array.isArray(s.vaa) ? s.vaa.filter(x => x && x.d) : [];
   o.shop = Array.isArray(s.shop) ? s.shop.filter(x => typeof x === 'string') : [];
   o.notes = typeof s.notes === 'string' ? s.notes : '';
+  o.cali = (s.cali && typeof s.cali==='object' && !Array.isArray(s.cali)) ? s.cali : {};
   // Migration V1 : hydratation du jour enregistré
   if (s.v !== 2 && s.day && s.water) { const d = o.days[s.day] || (o.days[s.day] = {}); if (!d.water) d.water = +s.water || 0; }
   sortWeights(o.weights);
@@ -417,7 +504,7 @@ let state = normalizeState(loadLocal());
 const saveLocalOnly = () => { try { localStorage.setItem(STORE, JSON.stringify(state)); } catch {} };
 const save = () => { saveLocalOnly(); queueCloudSave(); };
 
-const ui = {tab:'jour', date:todayKey(), muscu:null, vaa:null};
+const ui = {tab:'jour', date:todayKey(), muscu:null, vaa:null, caliView:null};
 
 const dayGet = k => state.days[k] || {};
 const dayMut = k => state.days[k] || (state.days[k] = {});
@@ -432,11 +519,23 @@ function phaseOf(k){
   else label = 'Semaine ' + w + '/12 · ' + p.name;
   return {week:w, i: w < 1 ? 1 : (w > 12 ? 2 : i), name:p.name, note:p.note, label, before:w<1, after:w>12};
 }
+function caliDayOf(k){ const n = daysBetween(state.settings.caliStart, k) + 1; return n >= 1 && n <= 28 ? n : null; }
+function caliItem(k){
+  const n = caliDayOf(k); if (!n) return null; const d = C28[n-1]; if (!d) return null;
+  return {id:'cali', t:CALI_TIME[dowOf(k)], kind:'session', open:'muscu:C',
+    title: d === 'test' ? `Calisthénie J${n}/28 — test max pompes` : `Calisthénie J${n}/28 · ≈ 15 min`,
+    detail: d === 'test' ? 'Une seule série de pompes, le maximum de répétitions propres' : d.map(([e,r]) => CEX[e].n + ' ' + r).join(' · ')};
+}
+function tlOf(k){
+  const P = planOf(k); if (!caliDayOf(k)) return P.tl;
+  const c = caliItem(k), base = P.tl.filter(i => !i.caliSlot);
+  return c ? [...base, c] : base;
+}
 function proteinOf(k){
   const d = dayGet(k), done = d.done || [];
-  return planOf(k).tl.reduce((s,it) => s + (it.p && done.includes(it.id) ? it.p : 0), 0) + (+d.protX || 0);
+  return tlOf(k).reduce((s,it) => s + (it.p && done.includes(it.id) ? it.p : 0), 0) + (+d.protX || 0);
 }
-function completionOf(k){ const tl = planOf(k).tl, done = dayGet(k).done || []; return tl.length ? tl.filter(i => done.includes(i.id)).length / tl.length : 0; }
+function completionOf(k){ const tl = tlOf(k), done = dayGet(k).done || []; return tl.length ? tl.filter(i => done.includes(i.id)).length / tl.length : 0; }
 function latestWeight(){ return state.weights.length ? state.weights[state.weights.length-1].kg : state.settings.startKg; }
 function gymLog(k,s){ return (state.gym[k] && state.gym[k][s]) || null; }
 function lastPerf(exId, beforeKey){
@@ -502,7 +601,7 @@ function renderJour(){
   const pct = Math.round(completionOf(k)*100), j = d.j || {};
   const isToday = k === todayKey();
   const wEntry = state.weights.find(x => x.d === k);
-  const tl = P.tl.slice().sort((a,b) => a.t.localeCompare(b.t)).map(it => `
+  const tl = tlOf(k).slice().sort((a,b) => a.t.localeCompare(b.t)).map(it => `
     <label class="tli ${it.kind} ${done.includes(it.id)?'done':''}">
       <input type="checkbox" data-in="tick" data-id="${it.id}" ${done.includes(it.id)?'checked':''}>
       <span class="t">${it.t}</span><span class="k"></span>
@@ -594,7 +693,7 @@ function renderSemaine(){
 
 function renderNutri(){
   const k = ui.date, P = planOf(k), T = DAYTYPES[P.type], target = state.settings.protein;
-  const meals = P.tl.filter(i => i.kind === 'meal' || i.kind === 'supp').sort((a,b)=>a.t.localeCompare(b.t));
+  const meals = tlOf(k).filter(i => i.kind === 'meal' || i.kind === 'supp').sort((a,b)=>a.t.localeCompare(b.t));
   const planned = meals.reduce((s,m)=>s+(m.p||0),0);
   const shop = GROCERIES.map(([id,n,q]) => `<label class="shop ${state.shop.includes(id)?'checked':''}"><input type="checkbox" data-in="shop" data-id="${id}" ${state.shop.includes(id)?'checked':''}><span>${esc(n)}</span><small>${esc(q)}</small></label>`).join('');
   $('p-nutri').innerHTML = `
@@ -638,23 +737,24 @@ function renderNutri(){
 
 function renderMuscu(){
   const k = ui.date, P = planOf(k);
-  const s = ui.muscu || (P.kind === 'muscu' ? P.s : (dowOf(k) <= 2 || dowOf(k) >= 5 ? 'A' : 'B'));
+  const s = ui.muscu || (P.kind === 'muscu' ? P.s : caliItem(k) ? 'C' : (dowOf(k) <= 2 || dowOf(k) >= 5 ? 'A' : 'B'));
   ui.muscu = s;
+  if (s === 'C') return renderCali();
   const S = MUSCU[s], ph = phaseOf(k), nSets = SETS_BY_PHASE[ph.i], log = gymLog(k,s) || {sets:{}};
   const exHtml = S.ex.map(e => {
     const n = e.fixed || nSets, cur = (log.sets && log.sets[e.id]) || [], last = lastPerf(e.id, k);
     const lastSet = last ? last.sets.filter(x=>x&&x.kg).slice(-1)[0] : null;
-    return `<div class="ex">
+    return `<div class="ex"><div class="exrow">${fig(e.fig, e.n)}<div class="exb">
       <b>${esc(e.n)}</b>
       <div class="presc">${n} × ${esc(e.reps)} · ${esc(e.load)} · repos ${esc(e.rest)}</div>
-      <div class="cue">${esc(e.cue)}</div>
+      <div class="cue">${esc(e.cue)}</div></div></div>
       <div class="sets">${Array.from({length:n},(_,i)=>{ const v = cur[i] || {}; return `<div class="setrow"><span>${i+1}</span>
         <input type="number" inputmode="decimal" step="0.5" placeholder="${lastSet ? lastSet.kg : 'kg'}" aria-label="Série ${i+1} kg" data-in="set" data-ex="${e.id}" data-i="${i}" data-f="kg" value="${v.kg ?? ''}"><em>×</em>
         <input type="number" inputmode="numeric" placeholder="rép" aria-label="Série ${i+1} répétitions" data-in="set" data-ex="${e.id}" data-i="${i}" data-f="reps" value="${v.reps ?? ''}"></div>`; }).join('')}</div>
       ${last ? `<div class="last">Dernière fois (${esc(fmtDay(last.k,{day:'numeric',month:'short'}))}) : ${esc(setsTxt(last.sets))}</div>` : ''}
     </div>`; }).join('');
   $('p-muscu').innerHTML = `
-    <div class="seg"><button class="${s==='A'?'on':''}" data-act="muscuS" data-s="A">Séance A · Mardi</button><button class="${s==='B'?'on':''}" data-act="muscuS" data-s="B">Séance B · Jeudi</button></div>
+    ${muscuSeg(s)}
     <div class="card hero">
       <div class="kind">${esc(ph.label)}</div>
       <h2>${esc(S.name)}</h2>
@@ -663,10 +763,52 @@ function renderMuscu(){
     </div>
     <div class="card"><h3>Échauffement · 8 min</h3><ul class="list">${WARMUP.map(w=>`<li>${esc(w)}</li>`).join('')}</ul></div>
     <div class="card"><div class="row"><h3>Exercices</h3><span class="dim">kg × répétitions</span></div>${exHtml}</div>
-    <div class="card"><h3>Calisthénie · 15 min</h3><p class="muted" style="margin:0 0 4px">3 tours : 40 s d’effort / 20 s de récupération, 1 min entre les tours.</p><ul class="list">${CALI.map(c=>`<li>${esc(c)}</li>`).join('')}</ul><p class="dim" style="margin:6px 0 0">Aucun saut ni impact : pied et genou préservés.</p></div>
+    ${caliItem(k) || caliDayOf(k) ? `<div class="card"><h3>Calisthénie</h3><p class="muted" style="margin:0 0 8px">${caliItem(k) ? 'Aujourd’hui : ' + esc(caliItem(k).title) + ' — ' + esc(caliItem(k).detail) : 'Jour de repos dans le programme 28 jours.'}</p><button class="btn sec" data-act="muscuS" data-s="C">Voir la calisthénie 28 jours</button></div>` :
+    `<div class="card"><h3>Calisthénie · 15 min</h3><p class="muted" style="margin:0 0 4px">3 tours : 40 s d’effort / 20 s de récupération, 1 min entre les tours.</p>${CALI.map(c=>`<div class="ex"><div class="exrow">${fig(c.fig, c.n)}<div class="exb"><b>${esc(c.n)}</b></div></div></div>`).join('')}<p class="dim" style="margin:6px 0 0">Aucun saut ni impact : pied et genou préservés.</p></div>`}
     <div class="card"><h3>Retour au calme · 5 min</h3><ul class="list">${COOLDOWN.map(c=>`<li>${esc(c)}</li>`).join('')}</ul></div>
     <div class="note"><b>Progression</b> — double progression : quand toutes les séries atteignent le haut de la fourchette, ajoute 1–2 répétitions, ralentis la descente (3 s) ou marque une pause en bas. Avec des haltères de 8 et 17 kg, on progresse surtout par les répétitions et le tempo. Arrête l’exercice si une douleur dépasse 3/10.</div>
     <div class="btnrow" style="margin:12px 0"><button class="btn" style="flex:1" data-act="gymDone" data-s="${s}">${log.done ? 'Séance terminée ✓ (annuler)' : 'Marquer la séance terminée'}</button></div>`;
+}
+
+function muscuSeg(s){
+  return `<div class="seg"><button class="${s==='A'?'on':''}" data-act="muscuS" data-s="A">A · Mardi</button><button class="${s==='B'?'on':''}" data-act="muscuS" data-s="B">B · Jeudi</button><button class="${s==='C'?'on':''}" data-act="muscuS" data-s="C">Calisthénie 28 j</button></div>`;
+}
+function caliTests(){
+  return [7,15,28].map(n => { const k = addDays(state.settings.caliStart, n-1), v = state.cali[k] && state.cali[k].max; return {n, k, v}; });
+}
+function renderCali(){
+  const start = state.settings.caliStart, todayN = caliDayOf(todayKey()), selN = caliDayOf(ui.date);
+  const before = daysBetween(start, ui.date) < 0;
+  const n = ui.caliView || selN || (before ? 1 : 28); ui.caliView = n;
+  const dk = addDays(start, n-1), d = C28[n-1], log = state.cali[dk] || {};
+  const doneCount = C28.filter((x,i) => x && (state.cali[addDays(start,i)]||{}).done).length, total = C28.filter(Boolean).length;
+  const grid = C28.map((x,i) => { const k = addDays(start,i), L = state.cali[k] || {};
+    const cls = [!x?'rest':'', x==='test'?'test':'', L.done?'done':'', i+1===todayN?'today':'', i+1===n?'sel':''].join(' ');
+    return `<button class="cc ${cls}" data-act="caliView" data-n="${i+1}">${i+1}<small>${!x?'repos':x==='test'?'test':L.done?'✓':parseKey(k).getDate()+'/'+(parseKey(k).getMonth()+1)}</small></button>`; }).join('');
+  let body;
+  if (!d) body = `<p class="muted">Jour de repos : récupération. Marche ou mobilité douce si tu veux bouger.</p>`;
+  else if (d === 'test') {
+    const tests = caliTests().filter(t => t.v);
+    body = `<div class="ex"><div class="exrow">${fig('pushup','Pompes')}<div class="exb"><b>Test : maximum de pompes</b><div class="presc">1 seule série, jusqu’à ne plus pouvoir faire une répétition propre</div><div class="cue">Échauffe-toi 5 min avant. Arrête dès que le corps n’est plus aligné.</div></div></div></div>
+      <div class="row" style="margin-top:8px"><input id="caliMax" type="number" inputmode="numeric" placeholder="Nombre de pompes" value="${esc(log.max ?? '')}"><button class="btn" data-act="caliMax" data-k="${dk}">Enregistrer</button></div>
+      ${tests.length ? `<p class="dim" style="margin:8px 0 0">Résultats : ${tests.map(t => 'J'+t.n+' → '+t.v).join(' · ')}</p>` : ''}`;
+  } else body = d.map(([e,r]) => { const X = CEX[e]; return `<div class="ex"><div class="exrow">${fig(X.fig, X.n)}<div class="exb"><b>${esc(X.n)}</b><div class="presc">${esc(r)}</div><div class="cue">${esc(X.cue)}</div>${X.alt?`<div class="alt">${esc(X.alt)}</div>`:''}</div></div></div>`; }).join('')
+    + `<p class="dim" style="margin:8px 0 0">Repos 60 à 90 s entre les séries. Gainage et mountain climbers : 2 à 3 passages de la durée indiquée.</p>`;
+  $('p-muscu').innerHTML = `
+    ${muscuSeg('C')}
+    <div class="card hero">
+      <div class="kind">Programme 28 jours · ${doneCount}/${total} séances faites</div>
+      <h2>Calisthénie — Jour ${n}/28</h2>
+      <div class="muted" style="color:#e3c9da">${esc(fmtDay(dk,{weekday:'long',day:'numeric',month:'long'}))}${n===todayN?' · aujourd’hui':''} · ≈ 15 min, poids du corps</div>
+      <div class="bar g" style="margin-top:10px"><i style="width:${Math.round(doneCount/total*100)}%"></i></div>
+    </div>
+    <div class="card"><div class="row"><h3>${!d?'Repos':d==='test'?'Jour de test':'Séance du jour '+n}</h3>${d && d!=='test' ? `<span class="pill">${d.length} exercices</span>` : ''}</div>${body}
+      ${d ? `<div class="btnrow" style="margin-top:12px"><button class="btn" style="flex:1" data-act="caliDone" data-k="${dk}">${log.done ? 'Séance faite ✓ (annuler)' : 'Marquer la séance faite'}</button></div>` : ''}</div>
+    <div class="card"><h3>Les 28 jours</h3><p class="dim" style="margin:0">Touche un jour pour voir son contenu. Bordure rose : aujourd’hui.</p><div class="cgrid">${grid}</div></div>
+    <div class="card"><h3>Début du programme</h3>
+      <div class="row"><input id="caliStartIn" type="date" value="${esc(start)}"><button class="btn sec" data-act="caliStart">Changer</button></div>
+      <p class="dim" style="margin:8px 0 0">Mardi et jeudi, la séance remplace le circuit de 15 min après la muscu. Les autres jours, fais-la le matin (≈ 15 min). Samedi, après la sortie longue : version légère ou repos si tu es fatigué.</p></div>
+    <div class="note">Pas de sauts. Si le pied (fasciite) ou le genou dépasse 3/10 de douleur, prends l’option indiquée en orange ou passe l’exercice.</div>`;
 }
 
 function renderVaa(){
@@ -767,6 +909,7 @@ function renderSuivi(){
       </div>
       <p class="dim" style="margin:8px 0 0">Protéines : ${protDays.length ? Math.round(protDays.reduce((s,x)=>s+x,0)/protDays.length)+' g/jour en moyenne sur '+protDays.length+' jour(s) suivi(s)' : 'pas encore de repas cochés'}.</p>
     </div>
+    <div class="card"><h3>Calisthénie — tests max pompes</h3>${caliTests().map(t => `<div class="hist"><span>Jour ${t.n} · ${esc(fmtDay(t.k,{weekday:'short',day:'numeric',month:'short'}))}</span><b>${t.v != null ? t.v + ' pompes' : '—'}</b></div>`).join('')}</div>
     <div class="card"><h3>Muscu — dernières performances</h3>${perfRows ? `<table class="tbl"><tr><th>Exercice</th><th>Séries</th><th></th></tr>${perfRows}</table>` : '<p class="muted">Remplis le carnet dans l’onglet Muscu.</p>'}</div>`;
 }
 
@@ -789,10 +932,24 @@ function renderCompte(){
    ===================================================================== */
 const ACT = {
   tab: b => { ui.tab = b.dataset.tab; render(); window.scrollTo(0,0); },
-  pick: b => { ui.date = b.dataset.k; if (b.dataset.go) ui.tab = b.dataset.go; ui.muscu = null; ui.vaa = null; render(); if (b.dataset.go) window.scrollTo(0,0); },
-  date: b => { ui.date = addDays(ui.date, +b.dataset.v); ui.muscu = null; ui.vaa = null; render(); },
-  open: b => { ui.tab = b.dataset.tab; if (ui.tab === 'muscu') ui.muscu = b.dataset.s; if (ui.tab === 'vaa') ui.vaa = b.dataset.s; render(); window.scrollTo(0,0); },
-  muscuS: b => { ui.muscu = b.dataset.s; render(); },
+  pick: b => { ui.date = b.dataset.k; if (b.dataset.go) ui.tab = b.dataset.go; ui.muscu = null; ui.vaa = null; ui.caliView = null; render(); if (b.dataset.go) window.scrollTo(0,0); },
+  date: b => { ui.date = addDays(ui.date, +b.dataset.v); ui.muscu = null; ui.vaa = null; ui.caliView = null; render(); },
+  open: b => { ui.tab = b.dataset.tab; if (ui.tab === 'muscu') { ui.muscu = b.dataset.s; ui.caliView = null; } if (ui.tab === 'vaa') ui.vaa = b.dataset.s; render(); window.scrollTo(0,0); },
+  muscuS: b => { ui.muscu = b.dataset.s; ui.caliView = null; render(); },
+  caliView: b => { ui.caliView = +b.dataset.n; render(); },
+  caliDone: b => {
+    const k = b.dataset.k; const L = state.cali[k] = state.cali[k] || {}; L.done = !L.done;
+    const d = dayMut(k); d.done = d.done || [];
+    d.done = L.done ? [...new Set([...d.done, 'cali'])] : d.done.filter(x => x !== 'cali');
+    save(); render(); toast(L.done ? 'Séance de calisthénie enregistrée' : 'Séance marquée non faite');
+  },
+  caliMax: b => {
+    const v = num($('caliMax').value); if (!v || v < 0 || v > 500) { toast('Saisis un nombre valide'); return; }
+    const k = b.dataset.k; const L = state.cali[k] = state.cali[k] || {}; L.max = Math.round(v); L.done = true;
+    const d = dayMut(k); d.done = [...new Set([...(d.done||[]), 'cali'])];
+    save(); render(); toast('Test enregistré : ' + L.max + ' pompes');
+  },
+  caliStart: () => { const v = $('caliStartIn').value; if (!v) return; state.settings.caliStart = v; ui.caliView = null; save(); render(); toast('Début du programme : ' + fmtDay(v,{day:'numeric',month:'long'})); },
   vaaS: b => { ui.vaa = b.dataset.s; render(); },
   prot: b => { const d = dayMut(ui.date); d.protX = Math.max(0, (+d.protX||0) + (+b.dataset.v)); save(); render(); },
   water: b => { const d = dayMut(ui.date); d.water = Math.max(0, Math.min(30, (+d.water||0) + (+b.dataset.v))); save(); render(); },
@@ -809,7 +966,7 @@ const ACT = {
     const s = b.dataset.s, k = ui.date; state.gym[k] = state.gym[k] || {}; const g = state.gym[k][s] = state.gym[k][s] || {sets:{}};
     g.done = !g.done;
     const P = planOf(k), d = dayMut(k); d.done = d.done || [];
-    P.tl.filter(it => it.open === 'muscu:'+s).forEach(it => { d.done = g.done ? [...new Set([...d.done, it.id])] : d.done.filter(x => x !== it.id); });
+    tlOf(k).filter(it => it.open === 'muscu:'+s).forEach(it => { d.done = g.done ? [...new Set([...d.done, it.id])] : d.done.filter(x => x !== it.id); });
     save(); render(); toast(g.done ? 'Séance enregistrée 💪' : 'Séance marquée non terminée');
   },
   vaaSave: b => {
@@ -818,7 +975,7 @@ const ACT = {
     const i = state.vaa.findIndex(x => x.d === k && x.s === s);
     if (i >= 0) state.vaa[i] = e; else state.vaa.push(e);
     const P = planOf(k), d = dayMut(k); d.done = d.done || [];
-    P.tl.filter(it => it.kind === 'session' && it.open === 'vaa:'+s).forEach(it => { if (!d.done.includes(it.id)) d.done.push(it.id); });
+    tlOf(k).filter(it => it.kind === 'session' && it.open === 'vaa:'+s).forEach(it => { if (!d.done.includes(it.id)) d.done.push(it.id); });
     save(); render(); toast('Séance enregistrée');
   },
   copyShop: async () => { const t = GROCERIES.map(([id,n,q]) => (state.shop.includes(id)?'[x] ':'[ ] ')+n+' — '+q).join('\n'); try { await navigator.clipboard.writeText(t); toast('Liste copiée'); } catch { toast('Copie impossible dans ce navigateur'); } },
